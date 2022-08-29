@@ -60,13 +60,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Apple Pay Test'),
+          title: const Text('Payment Test'),
         ),
         body: Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Waiting for Apple Pay modal.'),
+            Text('Waiting for Response.'),
             RaisedButton(
               child: Text('Call payment'),
               onPressed: () => makePayment(),
