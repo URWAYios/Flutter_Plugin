@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:urwaypayment/urwaypayment.dart';
-// import 'package:apple_pay_flutter/apple_pay_flutter.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> makePayment() async {
 
-    // To store apple payment data
+    // To store payment data
     dynamic lastResult;
 
 
