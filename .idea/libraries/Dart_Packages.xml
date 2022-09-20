@@ -184,13 +184,6 @@
             </list>
           </value>
         </entry>
-        <entry key="flutter_inappwebview">
-          <value>
-            <list>
-              <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_inappwebview-5.4.3+7/lib" />
-            </list>
-          </value>
-        </entry>
         <entry key="flutter_test">
           <value>
             <list>
@@ -244,6 +237,13 @@
           <value>
             <list>
               <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.7.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="mime">
+          <value>
+            <list>
+              <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/mime-1.0.2/lib" />
             </list>
           </value>
         </entry>
@@ -348,7 +348,21 @@
         <entry key="permission_handler">
           <value>
             <list>
-              <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-9.0.1/lib" />
+              <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-10.0.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="permission_handler_android">
+          <value>
+            <list>
+              <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_android-10.0.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="permission_handler_apple">
+          <value>
+            <list>
+              <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_apple-9.0.4/lib" />
             </list>
           </value>
         </entry>
@@ -356,6 +370,13 @@
           <value>
             <list>
               <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_platform_interface-3.7.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="permission_handler_windows">
+          <value>
+            <list>
+              <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_windows-0.1.0/lib" />
             </list>
           </value>
         </entry>
@@ -443,6 +464,41 @@
             </list>
           </value>
         </entry>
+        <entry key="webview_flutter">
+          <value>
+            <list>
+              <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-3.0.4/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="webview_flutter_android">
+          <value>
+            <list>
+              <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_android-2.10.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="webview_flutter_platform_interface">
+          <value>
+            <list>
+              <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_platform_interface-1.9.3/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="webview_flutter_plus">
+          <value>
+            <list>
+              <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_plus-0.3.0+2/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="webview_flutter_wkwebview">
+          <value>
+            <list>
+              <option value="C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_wkwebview-2.9.4/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="win32">
           <value>
             <list>
@@ -485,13 +541,13 @@
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.3.0/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/ffi-2.0.1/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/file-6.1.4/lib" />
-      <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_inappwebview-5.4.3+7/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.5/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.1/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.4/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.11/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/material_color_utilities-0.1.4/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.7.0/lib" />
+      <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/mime-1.0.2/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/package_info_plus-1.4.3+1/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/package_info_plus_linux-1.0.5/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/package_info_plus_macos-1.3.0/lib" />
@@ -506,8 +562,11 @@
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.6/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_platform_interface-2.0.4/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.1.2/lib" />
-      <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-9.0.1/lib" />
+      <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-10.0.0/lib" />
+      <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_android-10.0.0/lib" />
+      <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_apple-9.0.4/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_platform_interface-3.7.0/lib" />
+      <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_windows-0.1.0/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/platform-3.1.0/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.1.2/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/process-4.2.4/lib" />
@@ -519,6 +578,11 @@
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/test_api-0.4.9/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/typed_data-1.3.0/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.2/lib" />
+      <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-3.0.4/lib" />
+      <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_android-2.10.1/lib" />
+      <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_platform_interface-1.9.3/lib" />
+      <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_plus-0.3.0+2/lib" />
+      <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_wkwebview-2.9.4/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/win32-2.7.0/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/.pub-cache/hosted/pub.dartlang.org/xdg_directories-0.2.0+1/lib" />
       <root url="file://C:/flutter_sdk/flutter_2.5.0/flutter_windows_2.5.0-stable/flutter/bin/cache/pkg/sky_engine/lib" />

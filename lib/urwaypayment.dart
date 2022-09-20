@@ -26,6 +26,7 @@ import 'package:urwaypayment/Model/PayTokenizeReq.dart';
 import 'package:urwaypayment/Model/PaymentReq.dart';
 
 import 'package:urwaypayment/ResponseConfig.dart';
+import 'package:urwaypayment/TransactWebpage.dart';
 // import 'package:wifi_ip/wifi_ip.dart';
 
 
@@ -149,19 +150,7 @@ class Payment {
   }
 
 
-  // static getPermission() async {
-  //   if (await Permission.contacts
-  //       .request()
-  //       .isGranted) {
-  //
-  //   } else {
-  //
-  //     Map<Permission, PermissionStatus> statuses = await [
-  //       Permission.storage,
-  //     ].request();
-  //
-  //   }
-  // }
+
 
   
   /**
@@ -223,7 +212,7 @@ class Payment {
     else {
       print("Unable to connect. Please Check Internet Connection");
     }
-    //ipAdd = "1.1.1.1";
+
     String ipAdd1;
 
     if (isValidationSucess(
@@ -246,19 +235,6 @@ class Payment {
       var bytes = utf8.encode(pipeSeperatedString);
       Digest sha256Result = sha256.convert(bytes);
       final digestHex = hex.encode(sha256Result.bytes);
-
-/*************************************************************/
-    //   {
-    //     "deviceInfo": {
-    // {
-    // "pluginName": "Flutter",
-    // "pluginVersion": "1.0",
-    // "pluginPlatform": "Mobile/desktop/Tablet",
-    // "deviceModel": "iphone 6s",
-    // "devicePlatform": "iphone",
-    // "deviceOSVersion": "15.0.1"
-    // }
-    // }
 
       PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
@@ -437,7 +413,7 @@ class Payment {
 
             result = (await Navigator.of(context).push(
                 MaterialPageRoute<String>(builder: (BuildContext context) {
-                  return new TransactPage(inURL: compURL);
+                  return new TransactWebpage(inURL: compURL);
                 })))!;
             _writetoFile(" Response from Hosted Page :  " + result + "\n");
 
