@@ -920,18 +920,12 @@ class Payment {
 
               _writetoFile("Response apple pay :" + response.body.toString() + "\n");
               var data = json.decode(response.body);
-
-
-            
               var resp1 = json.encode(data);
-
               ResponseConfig.startTrxn = false;
               _writetoFile(" Response from Hosted Page :  " + resp1 + "\n");
               return resp1;
-
             }
             else {
-
               var ErrorMsg;
               var apirespCode = data["responseCode"] as String;
               if (apirespCode == null) {
@@ -941,7 +935,6 @@ class Payment {
               else {
                 ErrorMsg = resp.respCode['$apirespCode'];
               }
-
               var apiresult = data["result"] as String;
               _writetoFile(
                   " Response from Hosted Page :  " + apirespCode + " : " +
@@ -950,7 +943,6 @@ class Payment {
               showalertDailog(context, '$apiresult', '$ErrorMsg');
             }
           }
-
           else {
             var data = json.decode(response.body);
 
@@ -968,8 +960,8 @@ class Payment {
             'Please check your Internet Connection ');
       }
     }
-    else {
-
+    else
+    {
       ResponseConfig.startTrxn = false;
     }
 
