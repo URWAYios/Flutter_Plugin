@@ -26,5 +26,8 @@
 
 * TODO: Updated Permission Handler Package version.
 
+## [1.0.6] - 20 Sep 2022.
+
+* TODO: Bug Fixes.
 
 

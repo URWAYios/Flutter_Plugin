@@ -24,9 +24,10 @@ class _TransactWebpageState extends State<TransactWebpage> {
   Future<bool> _onBackPressed() async {
 
     ResponseConfig.startTrxn = false;
-    Navigator.pop(context, true);
+    Navigator.of(context).pop(true);
     return Future.value(false);
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +43,12 @@ class _TransactWebpageState extends State<TransactWebpage> {
             child: WebViewPlus(
               initialUrl: widget.inURL,
               debuggingEnabled: true,
-              javascriptMode: JavascriptMode.unrestricted,
+              // javascriptMode: JavascriptMode.unrestricted,
               onWebViewCreated: (controller) {
                 _controller = controller;
               },
               onPageStarted: (url) {
                 setState(() {
-//            pr.show();
                   this.url = url.toString();
                   print(this.url);
                 });
@@ -57,15 +57,13 @@ class _TransactWebpageState extends State<TransactWebpage> {
               onPageFinished: (url) {
                 print(this.url);
                 var disurl = url.toString();
-                print('Transact URl  $disurl');
-                //pr.hide();
                 if (disurl.contains("&Result")) {
                   List<String> arr = url.toString().split('?');
                   var resData = arr[1];
                   print('RES DATA $resData');
                   //String lastData=splitResponse(arr[1]);
 
-                  List<RespDataModel> mapData = tomyJson(arr[1]);
+                  List<RespDataModel> mapData = RespJson(arr[1]);
                   print('Transact List $mapData');
 
 
@@ -74,6 +72,7 @@ class _TransactWebpageState extends State<TransactWebpage> {
                   print(map1);
                   Navigator.pop(context, '$map1');
                 }
+
               },
               onProgress: (progress) {
                 setState(() {
@@ -87,7 +86,7 @@ class _TransactWebpageState extends State<TransactWebpage> {
       ),
     );
   }
-    List<RespDataModel> tomyJson(String resultData) {
+    List<RespDataModel> RespJson(String resultData) {
       List<String> resultParameters = resultData.split("&");
       //
       // for (String parameter in resultParameters) {
@@ -118,10 +117,7 @@ class _TransactWebpageState extends State<TransactWebpage> {
 
         resSplitData.add(RespDataModel(resKey: key, resValue: value));
       }
-
-      print('final list of resSplitData');
-      print(resSplitData);
-
+      ResponseConfig.startTrxn = false;
       return resSplitData;
 
 
