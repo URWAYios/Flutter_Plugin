@@ -30,4 +30,8 @@
 
 * TODO: Bug Fixes.
 
+## [1.0.7] - 11 Oct 2022.
+
+* TODO: Javascript unrestricted in Webview of Plugin.
+
 

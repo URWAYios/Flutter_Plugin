@@ -43,7 +43,7 @@ class _TransactWebpageState extends State<TransactWebpage> {
             child: WebViewPlus(
               initialUrl: widget.inURL,
               debuggingEnabled: true,
-              // javascriptMode: JavascriptMode.unrestricted,
+              javascriptMode: JavascriptMode.unrestricted,
               onWebViewCreated: (controller) {
                 _controller = controller;
               },
@@ -88,15 +88,7 @@ class _TransactWebpageState extends State<TransactWebpage> {
   }
     List<RespDataModel> RespJson(String resultData) {
       List<String> resultParameters = resultData.split("&");
-      //
-      // for (String parameter in resultParameters) {
-      //   List parts = parameter.split("=");
-      //   String key = parts[0];
-      //   String value = parts[1];
-      //   map = {
-      //     key: value,
-      //
-      //   };
+
 
       for(final params in resultParameters){
 
