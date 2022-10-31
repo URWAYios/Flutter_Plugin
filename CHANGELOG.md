@@ -34,4 +34,10 @@
 
 * TODO: Javascript unrestricted in Webview of Plugin.
 
+## [1.0.8] - 31 Oct 2022.
+
+* TODO: Direct ApplePay failed Response Handling.
+
+
+
 

@@ -91,7 +91,7 @@ class Payment {
     }
     else
     {
-      print('$text');
+      // print('$text');
     }
   }
 
@@ -824,7 +824,7 @@ class Payment {
     {
     if(["", null].contains(appleToken['paymentData']) )
         {
-          print(" Empty");
+          // print(" Empty");
         }
     else
         {
@@ -876,10 +876,8 @@ class Payment {
 
         _writetoFile("Request apple pay :" + jsonBody + "\n");
 
-
         if (response.statusCode == 200) {
           _writetoFile("Response apple pay  1:" + response.body.toString() + "\n");
-
           var data = json.decode(response.body);
           var payId = data["tranid"] as String;
 
@@ -918,7 +916,7 @@ class Payment {
 
             if (response.statusCode == 200) {
 
-              _writetoFile("Response apple pay :" + response.body.toString() + "\n");
+              _writetoFile("Response apple pay Enquiry :" + response.body.toString() + "\n");
               var data = json.decode(response.body);
               var resp1 = json.encode(data);
               ResponseConfig.startTrxn = false;
@@ -926,6 +924,7 @@ class Payment {
               return resp1;
             }
             else {
+
               var ErrorMsg;
               var apirespCode = data["responseCode"] as String;
               if (apirespCode == null) {
@@ -944,12 +943,17 @@ class Payment {
             }
           }
           else {
+            // var data = json.decode(response.body);
             var data = json.decode(response.body);
+            var resp1 = json.encode(data);
+            ResponseConfig.startTrxn = false;
+            _writetoFile(" Response from Hosted Page :  " + resp1 + "\n");
+            return resp1;
 
-            var resp_code = data["responseCode"] as String;
-
-            _writetoFile("Response :" + resp_code + "\n");
-            showalertDailog(context, 'Error', 'Invalid Request with $resp_code');
+            // var resp_code = data["responseCode"] as String;
+            //
+            // _writetoFile("Response :" + resp_code + "\n");
+            // showalertDailog(context, 'Error', 'Invalid Request with $resp_code');
           }
         }
       }
