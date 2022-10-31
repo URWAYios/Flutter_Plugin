@@ -50,26 +50,26 @@ class _TransactWebpageState extends State<TransactWebpage> {
               onPageStarted: (url) {
                 setState(() {
                   this.url = url.toString();
-                  print(this.url);
+                  // print(this.url);
                 });
               },
 
               onPageFinished: (url) {
-                print(this.url);
+                // print(this.url)
                 var disurl = url.toString();
                 if (disurl.contains("&Result")) {
                   List<String> arr = url.toString().split('?');
                   var resData = arr[1];
-                  print('RES DATA $resData');
+                  // print('RES DATA $resData');
                   //String lastData=splitResponse(arr[1]);
 
                   List<RespDataModel> mapData = RespJson(arr[1]);
-                  print('Transact List $mapData');
+                  // print('Transact List $mapData');
 
 
                   var map1 = Map.fromIterable(
                       mapData, key: (e) => e.resKey, value: (e) => e.resValue);
-                  print(map1);
+                  // print(map1);
                   Navigator.pop(context, '$map1');
                 }
 
