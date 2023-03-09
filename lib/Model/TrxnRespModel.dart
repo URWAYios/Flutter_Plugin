@@ -8,11 +8,11 @@ class TrxnRespModel
   final String cardToken;
   final String cardBrand;
   final String maskedPanNo;
-  final String ResponseMsg;
+  final String responseMsg;
 
 
 TrxnRespModel({required this.tranId, required this.responseCode, required this.amount, required this.result,
-     required this.cardToken,required this.cardBrand,required this.maskedPanNo,required this.ResponseMsg});
+     required this.cardToken,required this.cardBrand,required this.maskedPanNo,required this.responseMsg});
 
   factory TrxnRespModel.fromJson(Map<String, dynamic> json) {
   return TrxnRespModel(
@@ -24,7 +24,7 @@ TrxnRespModel({required this.tranId, required this.responseCode, required this.a
     cardToken: json['cardToken'],
     cardBrand: json['cardBrand'],
     maskedPanNo: json['maskedPanNo'],
-    ResponseMsg: json['responseMsg'],
+    responseMsg: json['responseMsg'],
 
   );
   }
@@ -39,7 +39,7 @@ TrxnRespModel({required this.tranId, required this.responseCode, required this.a
   map["cardToken"] =cardToken;
   map["cardBrand"] =cardBrand;
   map["maskedPanNo"] =maskedPanNo;
-  map["ResponseMsg"] =ResponseMsg;
+  map["ResponseMsg"] =responseMsg;
   return map;
   }
 }

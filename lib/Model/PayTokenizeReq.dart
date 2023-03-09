@@ -21,6 +21,7 @@ class PayTokenizeReq
   String cardToken;
   String requestHash;
  String deviceinfo;
+ String metaData;
 
 
 
@@ -31,7 +32,7 @@ class PayTokenizeReq
     required this.customerEmail, required this.country, required this.amount, required this.customerIp,
     required this.merchantIp, required this.trackid, required this.udf1, required this.udf2, required this.udf3, required this.udf4,
     required this.udf5, required this.udf7,required this.tokenOperation,
-    required this.cardToken, required this.requestHash,required this.deviceinfo});
+    required this.cardToken, required this.requestHash,required this.deviceinfo,required this.metaData});
 
   factory PayTokenizeReq.fromJson(Map<String, dynamic> json)
   {
@@ -56,7 +57,8 @@ class PayTokenizeReq
         cardToken:json['cardToken'] as String,
         tokenOperation:json['tokenOperation'] as String,
         requestHash: json['requestHash'] as String,
-        deviceinfo: json['deviceinfo'] as String
+        deviceinfo: json['deviceinfo'] as String,
+        metaData: json['metaData'] as String
     );
     return pay;
   }
@@ -84,6 +86,7 @@ class PayTokenizeReq
     map["tokenOperation"]=tokenOperation;
     map["requestHash"]=requestHash;
    map["deviceinfo"] = deviceinfo;
+   map["metaData"] = metaData;
 
     return map;
   }

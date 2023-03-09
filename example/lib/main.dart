@@ -67,9 +67,16 @@ class _MyAppState extends State<MyApp> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('Waiting for Response.'),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Call payment'),
               onPressed: () => makePayment(),
+
+            ),
+
+            ElevatedButton(
+              child: Text('Call ApplePay payment'),
+              onPressed: () => makePayment(),
+
             )
           ],
         )),
