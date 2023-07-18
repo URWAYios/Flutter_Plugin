@@ -140,12 +140,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "mime",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/mime-1.0.4",
-      "packageUri": "lib/",
-      "languageVersion": "2.18"
-    },
-    {
       "name": "nm",
       "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/nm-0.5.0",
       "packageUri": "lib/",
@@ -291,33 +285,27 @@
     },
     {
       "name": "webview_flutter",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/webview_flutter-2.8.0",
+      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/webview_flutter-4.2.2",
       "packageUri": "lib/",
-      "languageVersion": "2.14"
+      "languageVersion": "2.18"
     },
     {
       "name": "webview_flutter_android",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/webview_flutter_android-2.10.4",
+      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/webview_flutter_android-3.9.1",
       "packageUri": "lib/",
-      "languageVersion": "2.14"
+      "languageVersion": "2.18"
     },
     {
       "name": "webview_flutter_platform_interface",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/webview_flutter_platform_interface-1.9.5",
+      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/webview_flutter_platform_interface-2.4.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "webview_flutter_plus",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/webview_flutter_plus-0.2.4",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.18"
     },
     {
       "name": "webview_flutter_wkwebview",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-2.9.5",
+      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.7.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.18"
     },
     {
       "name": "win32",
@@ -350,7 +338,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-07-18T20:19:23.084731Z",
+  "generated": "2023-07-18T20:25:15.267997Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }
