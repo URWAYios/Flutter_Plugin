@@ -291,7 +291,7 @@
     },
     {
       "name": "webview_flutter",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/webview_flutter-3.0.4",
+      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/webview_flutter-2.8.0",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
@@ -309,7 +309,7 @@
     },
     {
       "name": "webview_flutter_plus",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/webview_flutter_plus-0.3.0+2",
+      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/webview_flutter_plus-0.2.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -350,7 +350,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-07-18T20:02:51.303579Z",
+  "generated": "2023-07-18T20:19:23.084731Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }
