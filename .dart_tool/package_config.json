@@ -8,12 +8,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "args",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/args-2.4.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
-    },
-    {
       "name": "async",
       "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/async-2.11.0",
       "packageUri": "lib/",
@@ -32,14 +26,26 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "connectivity_plus",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/connectivity_plus-3.0.6",
+      "name": "connectivity",
+      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/connectivity-3.0.6",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
-      "name": "connectivity_plus_platform_interface",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/connectivity_plus_platform_interface-1.2.4",
+      "name": "connectivity_for_web",
+      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/connectivity_for_web-0.4.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "connectivity_macos",
+      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/connectivity_macos-0.2.1+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "connectivity_platform_interface",
+      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/connectivity_platform_interface-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -60,12 +66,6 @@
       "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/dart_ipify-1.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
-    },
-    {
-      "name": "dbus",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/dbus-0.7.8",
-      "packageUri": "lib/",
-      "languageVersion": "2.15"
     },
     {
       "name": "device_info_plus",
@@ -136,12 +136,6 @@
     {
       "name": "meta",
       "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/meta-1.8.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "nm",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/nm-0.5.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -228,12 +222,6 @@
       "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/permission_handler_windows-0.1.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
-    },
-    {
-      "name": "petitparser",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/petitparser-5.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.18"
     },
     {
       "name": "platform",
@@ -326,19 +314,13 @@
       "languageVersion": "2.18"
     },
     {
-      "name": "xml",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/xml-6.2.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.18"
-    },
-    {
       "name": "urwaypayment",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-07-19T08:30:49.059498Z",
+  "generated": "2023-07-19T09:07:22.716616Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }
