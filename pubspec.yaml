@@ -4,29 +4,30 @@ version: 1.0.11
 homepage: https://github.com/URWAYios/Flutter_Plugin.git
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=2.19.6 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.3
-  permission_handler: ^10.0.0
-  path_provider: ^2.0.1
-  convert: ^3.0.0
-  crypto: ^3.0.1
-  connectivity_plus: ^3.0.2
-  email_validator: ^2.0.1
-  device_info_plus: ^4.1.2
+  http: ^0.13.6
+  permission_handler: ^10.4.3
+  path_provider: ^2.0.15
+  convert: ^3.1.1
+  crypto: ^3.0.3
+  connectivity: ^3.0.6
+  email_validator: ^2.1.17
+  device_info_plus: ^9.0.2
   dart_ipify: ^1.1.1
   apple_pay_flutter: ^0.0.8
-  package_info_plus: ^1.4.3+1
-  webview_flutter_plus: ^0.3.0+2
+  package_info_plus: ^4.0.2
+  webview_flutter: ^4.2.2
+
+#  webview_flutter_plus: ^0.3.0+2
 
 
 
 
-dependency_overrides:
-
+dev_dependencies:
 
 
 # The following section is specific to Flutter.
