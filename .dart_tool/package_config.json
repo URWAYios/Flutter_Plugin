@@ -33,9 +33,9 @@
     },
     {
       "name": "connectivity_plus",
-      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/connectivity_plus-4.0.1",
+      "rootUri": "file:///Users/osama/.pub-cache/hosted/pub.dev/connectivity_plus-3.0.6",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "2.12"
     },
     {
       "name": "connectivity_plus_platform_interface",
@@ -338,7 +338,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-07-18T20:25:15.267997Z",
+  "generated": "2023-07-19T08:30:49.059498Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }
