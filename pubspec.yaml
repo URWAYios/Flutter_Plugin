@@ -14,7 +14,7 @@ dependencies:
   path_provider: ^2.0.15
   convert: ^3.1.1
   crypto: ^3.0.3
-  connectivity_plus: ^3.0.6
+  connectivity: ^3.0.6
   email_validator: ^2.1.17
   device_info_plus: ^9.0.2
   dart_ipify: ^1.1.1
