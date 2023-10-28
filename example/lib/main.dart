@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
           state: "XYZ",
           tokenizationType: "1",
           zipCode: "",
-          tokenOperation: "A/U/D");
+          tokenOperation: "A/U/D", metadata:"" );
 
 
       print('Result in Main is $lastResult');
@@ -67,9 +67,16 @@ class _MyAppState extends State<MyApp> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('Waiting for Response.'),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Call payment'),
               onPressed: () => makePayment(),
+
+            ),
+
+            ElevatedButton(
+              child: Text('Call ApplePay payment'),
+              onPressed: () => makePayment(),
+
             )
           ],
         )),

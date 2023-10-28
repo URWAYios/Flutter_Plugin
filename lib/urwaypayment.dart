@@ -5,7 +5,8 @@ import 'dart:io';
 import 'dart:async';
 import 'dart:core';
 import 'package:apple_pay_flutter/apple_pay_flutter.dart';
-import 'package:connectivity/connectivity.dart';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:convert/convert.dart';
 import 'package:dart_ipify/dart_ipify.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -27,7 +28,7 @@ import 'package:urwaypayment/Model/PaymentReq.dart';
 
 import 'package:urwaypayment/ResponseConfig.dart';
 import 'package:urwaypayment/TransactWebpage.dart';
-// import 'package:wifi_ip/wifi_ip.dart';
+
 
 
 
@@ -91,7 +92,7 @@ class Payment {
     }
     else
     {
-      // print('$text');
+
     }
   }
 
@@ -100,11 +101,18 @@ class Payment {
    * This method takes Transaction Details as @params*****/
 
   static Future<String> makepaymentService({
-    required BuildContext context, required String country, required String action, required String currency, required String amt, required String customerEmail, required String trackid, required String udf1, required String udf2, required String udf3, required String udf4, required String udf5, required String address, required String city, required String zipCode, required String state, required String cardToken, required String tokenizationType, required String tokenOperation
+    required BuildContext context, required String country, required String action, required String currency,
+    required String amt, required String customerEmail, required String trackid, required String udf1, required String udf2,
+    required String udf3, required String udf4, required String udf5, required String address, required String city,
+    required String zipCode, required String state, required String cardToken, required String tokenizationType,
+    required String tokenOperation,required metadata
   }) async {
     assert(context != null, "context is null!!");
 
     String payRespData="";
+
+    /**
+     *  Initial Check for Transaction Processing  *****/
     if (ResponseConfig.startTrxn != Constantvals.appinitiateTrxn) {
       ResponseConfig.startTrxn = true;
 
@@ -130,7 +138,8 @@ class Payment {
               state,
               cardToken,
               tokenizationType,
-              tokenOperation
+              tokenOperation,
+              metadata
           );
           payRespData = order;
         }
@@ -138,7 +147,8 @@ class Payment {
       on SocketException catch (e)
       {
         ResponseConfig.startTrxn = false;
-        payRespData="Please check internet connection";
+        showalertDailog(context, 'Alert', "Please check Internet Connection");
+        //payRespData="Please check internet connection";
       }
     }
     else
@@ -155,17 +165,17 @@ class Payment {
   
   /**
    * 
-   * 
+   *  Api calling for First leg
    * */
   static Future<String> _read(BuildContext context, String country,
       String action, String currency, String amt, String customerEmail,
       String trackid, String udf1, String udf2, String udf3, String udf4,
       String udf5, String address, String city, String zipCode, String state,
-      String cardToken, String tokenizationType, String tokenOperation) async {
+      String cardToken, String tokenizationType, String tokenOperation,String metadata) async {
     String text;
     String url = "";
     String readRespData= "";
-    String result;
+    String? result;
     double progress = 0;
     String pipeSeperatedString;
     var body;
@@ -198,6 +208,7 @@ class Payment {
     /**
      * Connectivity is checked as there is server call*/
     var connectivityResult = await (Connectivity().checkConnectivity());
+    //print(connectivityResult);
     if (connectivityResult == ConnectivityResult.mobile) {
 
       final ipv4 = await Ipify.ipv4();
@@ -225,8 +236,7 @@ class Payment {
         trackid,
         tokenOperation,
         cardToken)) {
-//    check validation
-//    pr.show();
+
       pipeSeperatedString =
           trackid + "|" + Constantvals.termId + "|" + Constantvals.termpass +
               "|" +
@@ -243,8 +253,6 @@ class Payment {
       String appversion = packageInfo.version;
       // String buildNumber = packageInfo.buildNumber;
 
-
-/*************************************************************/
       try {
         DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
 
@@ -301,7 +309,9 @@ class Payment {
             tokenizationType: tokenizationType,
             requestHash: digestHex, tokenOperation: '',
             udf7: '',
-            deviceinfo: devicebody);
+            deviceinfo: devicebody,
+            metaData:metadata
+        );
         body = json.encode(payment.toMap());
 
       }
@@ -328,7 +338,8 @@ class Payment {
             requestHash: digestHex,
             tokenOperation: tokenOperation,
             udf7: '',
-           deviceinfo: devicebody
+           deviceinfo: devicebody,
+          metaData: metadata
         );
         body = json.encode(payTokenize.toMap());
       }
@@ -351,7 +362,9 @@ class Payment {
             udf4: udf4,
             udf5: udf5,
             cardToken: cardToken,
-            requestHash: digestHex, udf7: '',deviceinfo: devicebody);
+            requestHash: digestHex, udf7: '',
+            deviceinfo: devicebody,
+            metaData: metadata);
         body = json.encode(payRefundReq.toMap());
       }
       else if (action == "13") {
@@ -372,7 +385,8 @@ class Payment {
             udf5: udf5,
             udf4: udf4,
             requestHash: digestHex, udf7: '',
-            deviceinfo: devicebody);
+            deviceinfo: devicebody,
+            metaData: metadata);
 
         body = json.encode(paySTC.toMap());
       }
@@ -414,21 +428,27 @@ class Payment {
             result = (await Navigator.of(context).push(
                 MaterialPageRoute<String>(builder: (BuildContext context) {
                   return new TransactWebpage(inURL: compURL);
-                })))!;
+                }))) ?? ''  ;
             _writetoFile(" Response from Hosted Page :  " + result + "\n");
 
-            if (result == null) {
-              result = '';
-            }
-            ResponseConfig.startTrxn = false;
-            readRespData = result;
+            if(result == null  )
+              {
+                Navigator.of(context)
+                    .pop();
+                ResponseConfig.startTrxn = false;
+              }
+            else
+              {
+                ResponseConfig.startTrxn = false;
+                readRespData = result;
+              }
+
+
           }
           else if (tar_url == null && resp_code == '000') {
             var pay=null;
 
             ResponseConfig.startTrxn = false;
-
-
 
             var data = json.decode(response.body);
             Map<String, dynamic> mapdata = data;
@@ -449,12 +469,13 @@ class Payment {
          
               String data1 = mapdata.toString();
         
-            readRespData = data1;
+            readRespData = data;
           }
           else {
 
             ResponseConfig.startTrxn = false;
 
+            var responseData = response.body;
             var data = json.decode(response.body);
             Map<String, dynamic> mapdata = data;
 
@@ -475,7 +496,7 @@ class Payment {
 
             String data1 = mapdata.toString();
             
-            readRespData = data1;
+            readRespData = responseData;
           }
         }
         else {
@@ -627,7 +648,7 @@ class Payment {
 
                     onPressed: () {
                       Navigator.of(context)
-                          .pop(); // To close the dialog//todo close plugin
+                          .pop(); // To close the dialTraog//todo close plugin
                       ResponseConfig.startTrxn = false;
                     },
                     child: Text('OK'),
@@ -663,7 +684,7 @@ class Payment {
    *  This method is use to perform Apple Pay transaction From Customer UserInterface
    */
   static Future<String> makeapplepaypaymentService({
-    required BuildContext context, required String country, required String action, required String currency, required String amt, required String customerEmail, required String trackid, required String udf1, required  String udf2, required String udf3, required String udf4, required String udf5, required String tokenizationType, required String merchantIdentifier, required String shippingCharge, required String companyName
+    required BuildContext context, required String country, required String action, required String currency, required String amt, required String customerEmail, required String trackid, required String udf1, required  String udf2, required String udf3, required String udf4, required String udf5, required String tokenizationType, required String merchantIdentifier, required String shippingCharge, required String companyName,required String metadata
   }) async {
     assert(context != null, "context is null!!");
     dynamic applePaymentData;
@@ -740,7 +761,7 @@ class Payment {
             udf4,
             udf5,
             tokenizationType,
-            applePaymentData);
+            applePaymentData,metadata);
 
             appleRespdata = order;
          }
@@ -748,7 +769,9 @@ class Payment {
       }
       on SocketException catch (e) {
       ResponseConfig.startTrxn = false;
-      appleRespdata = "Please check internet connection";
+      //appleRespdata = "Please check internet connection";
+
+      showalertDailog(context, 'Alert', "Please check Internet Connection");
     }
 
     return appleRespdata;
@@ -760,7 +783,7 @@ class Payment {
   static Future<String> applepayapi(BuildContext context, String country,
       String action, String currency, String amt, String customerEmail,
       String trackid, String udf1, String udf2, String udf3, String udf4,
-      String udf5, String tokenizationType, dynamic appleToken) async {
+      String udf5, String tokenizationType, dynamic appleToken , String metadata) async {
     String text;
     String RespData ="";
 
@@ -824,7 +847,7 @@ class Payment {
     {
     if(["", null].contains(appleToken['paymentData']) )
         {
-          // print(" Empty");
+
         }
     else
         {
@@ -862,6 +885,8 @@ class Payment {
             "paymentMethod": appleToken['paymentMethod']
           }).replaceAll('\\', ''),
           'applePayId': 'applepay',
+          'metaData' : metadata,
+
           'requestHash': sha256.convert(utf8.encode(pipeSeperatedString))
               .toString()
         });
@@ -903,6 +928,7 @@ class Payment {
               "udf4": "",
               "udf5": "",
               "udf2": "",
+              'metaData' : metadata,
               'requestHash': sha256.convert(utf8.encode(pipeSeperatedString)).toString()
             });
             var requrl = Uri.parse(Constantvals.requrl);

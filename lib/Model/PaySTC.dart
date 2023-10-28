@@ -19,6 +19,7 @@ class PaySTC
   String udf7;
   String requestHash;
  String deviceinfo;
+ String metaData;
 
   PaySTC
       ({
@@ -39,7 +40,9 @@ class PaySTC
     required this.udf4,
     required this.udf7,
     required this.requestHash,
-   required this.deviceinfo
+   required this.deviceinfo,
+   required this.metaData
+
   });
 
 
@@ -63,6 +66,7 @@ class PaySTC
     map["udf7"]=udf7;
     map["requestHash"]=requestHash;
     map["deviceinfo"]=deviceinfo;
+    map["metaData"]=metaData;
 
     return map;
   }

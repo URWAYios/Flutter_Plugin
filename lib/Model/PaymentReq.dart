@@ -27,12 +27,13 @@ class PaymentReq
   late String requestHash;
   late String instrumentType;
   late String deviceinfo;
+  late String metaData;
 
   PaymentReq({required this.terminalId, required this.password, required this.action, required this.currency,
     required this.customerEmail,required this.country,required this.amount,required this.customerIp,
     required this.merchantIp,required this.trackid,required this.udf1, required this.udf2,required this.udf3,required this.udf4,
     required this.udf5,required this.udf7,required this.address, required this.city,required this.zipCode,required this.state,required this.tokenOperation,
-    required this.cardToken,required this.tokenizationType,required this.requestHash,required this.instrumentType,required this.deviceinfo});
+    required this.cardToken,required this.tokenizationType,required this.requestHash,required this.instrumentType,required this.deviceinfo,required this.metaData});
 
 
   //action12
@@ -80,7 +81,8 @@ class PaymentReq
         tokenizationType:json['tokenizationType'] as String,
         requestHash: json['requestHash'] as String,
          instrumentType: json['instrumentType'] as String,
-         deviceinfo: json['deviceinfo'] as String
+         deviceinfo: json['deviceinfo'] as String,
+       metaData: json['metaData'] as String,
     );
 
      pay=PaymentReq.tokenize(terminalId:json['terminalId'] as String,
@@ -165,7 +167,7 @@ class PaymentReq
     map["requestHash"]=requestHash;
     map["instrumentType"]=instrumentType;
     map["deviceinfo"]=deviceinfo;
-
+    map["metaData"]=metaData;
     return map;
   }
 

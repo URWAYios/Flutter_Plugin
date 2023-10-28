@@ -38,6 +38,21 @@
 
 * TODO: Direct ApplePay failed Response Handling.
 
+## [1.0.9] - 06 Jan 2023.
+
+* TODO: Updated Connectivity Dependency to Connectivity Plus.
+
+## [1.0.10] - 02 Feb 2023.
+
+* TODO: Added Back button in Plugin with Confirmation Dailog box.
+
+## [1.0.11] - 09 Mar 2023.
+
+* TODO: Added MetaData paramter in all Transaction types.
+
+## [2.0.0] - 28 Oct 2023.
+
+* TODO: Upgraded dependencies and Dart SDK version
 
 
 
