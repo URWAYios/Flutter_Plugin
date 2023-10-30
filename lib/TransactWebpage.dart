@@ -94,11 +94,11 @@ class _TransactWebpageState extends State<TransactWebpage> {
                 if (disurl.contains("&Result")) {
                   List<String> arr = url.toString().split('?');
                   var resData = arr[1];
-                  // print('RES DATA $resData');
+                  print('RES DATA $resData');
                   //String lastData=splitResponse(arr[1]);
 
                  String mapData = RespJson(arr[1]);
-                // print(mapData);
+                print(mapData);
                   // // print('Transact List $mapData');
                   //
                   //
@@ -139,9 +139,9 @@ class _TransactWebpageState extends State<TransactWebpage> {
         if("metaData".contains(parts[0]))
           {
             String strdecoded=parts[1];
-         //   print(strdecoded);
-            // String decoded = utf8.decode(base64.decode(strdecoded));
-            // print(decoded);
+           print(strdecoded);
+             String decoded = utf8.decode(base64.decode(strdecoded));
+            print(decoded);
 
             String strMetadata = strdecoded.split('.')[0];
             List<int> res = base64.decode(base64.normalize(strMetadata));

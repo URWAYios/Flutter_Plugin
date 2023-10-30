@@ -397,7 +397,7 @@ class Payment {
           'Content-type': 'application/json',
           'Accept': 'application/json'
         };
-
+print(body);
         var requrl = Uri.parse(Constantvals.requrl);
         var response = await http.post(
             requrl, headers: headers, body: body);

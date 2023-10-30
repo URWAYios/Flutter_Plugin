@@ -5,7 +5,7 @@
         <entry key="apple_pay_flutter">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/apple_pay_flutter-0.0.9/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/apple_pay_flutter-1.0.0/lib" />
             </list>
           </value>
         </entry>
@@ -453,7 +453,7 @@
       </option>
     </properties>
     <CLASSES>
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/apple_pay_flutter-0.0.9/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/apple_pay_flutter-1.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/args-2.3.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/args-2.4.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/async-2.11.0/lib" />

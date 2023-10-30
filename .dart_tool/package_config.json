@@ -3,7 +3,7 @@
   "packages": [
     {
       "name": "apple_pay_flutter",
-      "rootUri": "file:///Users/Amit/.pub-cache/hosted/pub.dev/apple_pay_flutter-0.0.9",
+      "rootUri": "file:///Users/Amit/.pub-cache/hosted/pub.dev/apple_pay_flutter-1.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -356,7 +356,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-10-28T15:25:25.658776Z",
+  "generated": "2023-10-30T14:09:52.180575Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }
