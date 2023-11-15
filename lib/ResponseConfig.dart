@@ -11,8 +11,8 @@ class ResponseConfig {
 
   ResponseConfig() {
     respCode['000'] = 'Transaction Successful';
-    respCode['1'] = 'Pending for Authorisation';
-    respCode['101'] = '-Field is blank in a request';
+    respCode['1']   = 'Pending for Authorisation';
+    respCode['101'] = 'Field is blank in a request';
     respCode['102'] = 'Internal Mapping for ISO not set';
     respCode['103'] = 'ISO message field configuration not found';
     respCode['104'] = 'Response Code not found in ISO message';
@@ -22,7 +22,7 @@ class ResponseConfig {
     respCode['203'] = 'Institution does not exists';
     respCode['204'] = 'Card prefix is not belong to corresponding card Type';
     respCode['205'] = 'Card not allowed for this transaction';
-    respCode['206'] ='Negative IP, Customer is not allowed to perform Transaction';
+    respCode['206'] = 'Negative IP, Customer is not allowed to perform Transaction';
     respCode['207'] = 'Original Transaction not found';
     respCode['208'] = 'Transaction Flow not set for Transaction Type';
     respCode['209'] = 'Terminal status is Deactive, Transaction Declined';
@@ -37,21 +37,21 @@ class ResponseConfig {
     respCode['218'] = 'MOD10 Check Failed';
     respCode['219'] = 'Card Type not supported by Merchant';
     respCode['220'] = 'CVV Check Failed, CVV value not present';
-    respCode['221'] ='AVS Capture Check Failed, Could not find Customer Address';
-    respCode['222'] ='Customer Info Check failed, Could not find Customer Information';
+    respCode['221'] = 'AVS Capture Check Failed, Could not find Customer Address';
+    respCode['222'] = 'Customer Info Check failed, Could not find Customer Information';
     respCode['223'] = 'Card expiry date is not greater than current date';
     respCode['224'] = 'Invalid Login Attempts exceeded';
     respCode['225'] = 'Wrong Terminal password, Please Re-Initiate transaction';
-    respCode['226'] ='Negative Country, Customer is not allowed to perform Transaction';
+    respCode['226'] = 'Negative Country, Customer is not allowed to perform Transaction';
     respCode['227'] = 'Card type not supported by institution';
     respCode['228'] = 'Multiple captures not allowed';
-    respCode['229'] ='Original transaction was done by different terminal, relative transaction not allowed for this terminal';
+    respCode['229'] = 'Original transaction was done by different terminal, relative transaction not allowed for this terminal';
     respCode['230'] = 'Instrument Type not supported';
-    respCode['231'] ='Card Number doesnot belong to instrument Type present in Bin';
+    respCode['231'] = 'Card Number doesnot belong to instrument Type present in Bin';
     respCode['232'] = 'Instrument Type is not allowed for given Merchant';
-    respCode['233'] ='Recurring instrument Type doesnot matches with payment method';
-    respCode['234'] ='Card Data doesnot belong to instrument Type present in Global Instrument Table';
-    respCode['235'] ='Global Instrument Table doesnot contain values for given ID';
+    respCode['233'] = 'Recurring instrument Type doesnot matches with payment method';
+    respCode['234'] = 'Card Data doesnot belong to instrument Type present in Global Instrument Table';
+    respCode['235'] = 'Global Instrument Table doesnot contain values for given ID';
     respCode['237'] = 'Payment Session Timeout';
     respCode['238'] = 'Transaction already initiated';
     respCode['239'] = 'Merchant is inactive';

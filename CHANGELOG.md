@@ -54,5 +54,8 @@
 
 * TODO: Upgraded dependencies and Dart SDK version
 
+## [2.0.2] - 28 Oct 2023.
+
+* TODO: Upgraded Kotlin SDK version
 
 

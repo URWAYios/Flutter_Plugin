@@ -15,7 +15,7 @@ import 'package:flutter/services.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
+//import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -41,60 +41,60 @@ import 'package:crypto/crypto.dart';
 
 class Payment {
 
-  static Future get _localPath async {
-    String? dirPath;
+  // static Future get _localPath async {
+  //   String? dirPath;
+  //
+  //   /**
+  //    * Based on Platform Direct is created
+  //    * */
+  //   if (Platform.isIOS) {
+  //     final appDirectory = await getDownloadsDirectory();
+  //     dirPath = appDirectory!.path;
+  //
+  //   }
+  //
+  //   else if (Platform.isAndroid) {
+  //     // External storage directory: /storage/emulated/0
+  //     final externalDirectory = await getDownloadsDirectory();
+  //     dirPath = externalDirectory!.path;
+  //
+  //   }
+  //
+  //   return dirPath;
+  // }
 
-    /**
-     * Based on Platform Direct is created
-     * */
-    if (Platform.isIOS) {
-      final appDirectory = await getApplicationDocumentsDirectory();
-      dirPath = appDirectory.path;
-
-    }
-
-    else if (Platform.isAndroid) {
-      // External storage directory: /storage/emulated/0
-      final externalDirectory = await getExternalStorageDirectory();
-      dirPath = externalDirectory!.path;
-
-    }
-
-    return dirPath;
-  }
-
-  static Future get _localFile async {
-    final path = await _localPath;
-    final folderName = "urway";
-
-
-    return File('$path/RespReqLog.txt');
-  }
+  // static Future get _localFile async {
+  //   final path = await _localPath;
+  //   final folderName = "urway";
+  //
+  //
+  //   return File('$path/RespReqLog.txt');
+  // }
 
 
   /**
    * This method is used to write Response and Request to File
    * */
-  static Future _writetoFile(String text) async {
-
-
-    final file = await _localFile;
-
-
-    var now1 = new DateTime.now();
-    String datetime = now1.toString();
-    var header = datetime + ": " + text;
-    File result = await file.writeAsString(header, mode: FileMode.append);
-
-    if (result == null)
-    {
-      print("Writing to file failed");
-    }
-    else
-    {
-
-    }
-  }
+  // static Future _writetoFile(String text) async {
+  //
+  //
+  //   final file = await _localFile;
+  //
+  //
+  //   var now1 = new DateTime.now();
+  //   String datetime = now1.toString();
+  //   var header = datetime + ": " + text;
+  //   File result = await file.writeAsString(header, mode: FileMode.append);
+  //
+  //   if (result == null)
+  //   {
+  //     print("Writing to file failed");
+  //   }
+  //   else
+  //   {
+  //
+  //   }
+  // }
 
   /**
    * This method is used to perform Transactions
@@ -146,6 +146,8 @@ class Payment {
       }
       on SocketException catch (e)
       {
+
+        print(e);
         ResponseConfig.startTrxn = false;
         showalertDailog(context, 'Alert', "Please check Internet Connection");
         //payRespData="Please check internet connection";
@@ -276,7 +278,8 @@ class Payment {
           pluginPlatform = iosInfo.systemVersion;
 
         }
-      } on PlatformException {
+      } on PlatformException catch (e){
+        print('error caught: $e');
 
       }
       DeviceDetailsModel detailsModel =new DeviceDetailsModel(devicemodel: devicemodel, deviceVersion: deviceVersion, devicePlatform: devicePlatform, pluginName: pluginName, pluginVersion: pluginVersion, pluginPlatform: pluginPlatform);
@@ -392,17 +395,18 @@ class Payment {
       }
 
       try {
-       _writetoFile("Request " + body + "\n");
+     //  _writetoFile("Request " + body + "\n");
         Map<String, String> headers = {
           'Content-type': 'application/json',
           'Accept': 'application/json'
         };
+        print(Constantvals.requrl);
 print(body);
         var requrl = Uri.parse(Constantvals.requrl);
         var response = await http.post(
             requrl, headers: headers, body: body);
-
-
+print(requrl);
+print(response);
         /**
          * Response is checked */
         if (response.statusCode == 200) {
@@ -429,8 +433,8 @@ print(body);
                 MaterialPageRoute<String>(builder: (BuildContext context) {
                   return new TransactWebpage(inURL: compURL);
                 }))) ?? ''  ;
-            _writetoFile(" Response from Hosted Page :  " + result + "\n");
-
+           // _writetoFile(" Response from Hosted Page :  " + result + "\n");
+print(result);
             if(result == null  )
               {
                 Navigator.of(context)
@@ -502,14 +506,17 @@ print(body);
         else {
 
           String respCode = response.statusCode.toString();
-          _writetoFile("Response :" + body + "\n");
+          //_writetoFile("Response :" + body + "\n");
           showalertDailog(context, 'Error', 'Invalid Request with $respCode');
         }
       }
-      on Exception {
+      on Exception catch(e) {
+
+        print('error caught: $e');
+
         ResponseConfig.startTrxn = false;
         showalertDailog(context, 'Internet Connection',
-            'Please check your Internet Connection ');
+            'Please check your Internet Connection $e ');
 
       }
     }
@@ -732,10 +739,11 @@ print(body);
               companyName: companyName,
 
             );
-             _writetoFile(" Apple token Data :" + applePaymentData.toString());
+            // _writetoFile(" Apple token Data :" + applePaymentData.toString());
           }
         }
-          on PlatformException {
+          on PlatformException  catch(e){
+            print('error caught: $e');
             print('Failed payment');
           }
         var totalcharge= double.parse(amt)+double.parse(shippingCharge);
@@ -768,7 +776,9 @@ print(body);
         }
       }
       on SocketException catch (e) {
-      ResponseConfig.startTrxn = false;
+        print('error caught: $e');
+
+        ResponseConfig.startTrxn = false;
       //appleRespdata = "Please check internet connection";
 
       showalertDailog(context, 'Alert', "Please check Internet Connection");
@@ -824,7 +834,8 @@ print(body);
 
         ipAdd = ipv4;
 
-      } on PlatformException {
+      } on PlatformException  catch (e){
+        print('error caught: $e');
         print('Failed to get broadcast IP.');
       }
 
@@ -899,10 +910,10 @@ print(body);
           body: jsonBody,
         );
 
-        _writetoFile("Request apple pay :" + jsonBody + "\n");
+      //  _writetoFile("Request apple pay :" + jsonBody + "\n");
 
         if (response.statusCode == 200) {
-          _writetoFile("Response apple pay  1:" + response.body.toString() + "\n");
+        //  _writetoFile("Response apple pay  1:" + response.body.toString() + "\n");
           var data = json.decode(response.body);
           var payId = data["tranid"] as String;
 
@@ -942,11 +953,11 @@ print(body);
 
             if (response.statusCode == 200) {
 
-              _writetoFile("Response apple pay Enquiry :" + response.body.toString() + "\n");
+          //    _writetoFile("Response apple pay Enquiry :" + response.body.toString() + "\n");
               var data = json.decode(response.body);
               var resp1 = json.encode(data);
               ResponseConfig.startTrxn = false;
-              _writetoFile(" Response from Hosted Page :  " + resp1 + "\n");
+            //  _writetoFile(" Response from Hosted Page :  " + resp1 + "\n");
               return resp1;
             }
             else {
@@ -961,9 +972,9 @@ print(body);
                 ErrorMsg = resp.respCode['$apirespCode'];
               }
               var apiresult = data["result"] as String;
-              _writetoFile(
-                  " Response from Hosted Page :  " + apirespCode + " : " +
-                      ErrorMsg + "\n");
+              // _writetoFile(
+              //     " Response from Hosted Page :  " + apirespCode + " : " +
+              //         ErrorMsg + "\n");
 
               showalertDailog(context, '$apiresult', '$ErrorMsg');
             }
@@ -973,7 +984,7 @@ print(body);
             var data = json.decode(response.body);
             var resp1 = json.encode(data);
             ResponseConfig.startTrxn = false;
-            _writetoFile(" Response from Hosted Page :  " + resp1 + "\n");
+          //  _writetoFile(" Response from Hosted Page :  " + resp1 + "\n");
             return resp1;
 
             // var resp_code = data["responseCode"] as String;
@@ -983,11 +994,12 @@ print(body);
           }
         }
       }
-      on Exception
+      on Exception catch (e)
       {
+        print('error caught: $e');
         ResponseConfig.startTrxn = false;
         showalertDailog(context, 'Internet Connection',
-            'Please check your Internet Connection ');
+            'Please check   $e');
       }
     }
     else
