@@ -3,7 +3,7 @@
   "packages": [
     {
       "name": "apple_pay_flutter",
-      "rootUri": "file:///Users/admin/Documents/Flutter/Urway/apple_pay_flutter-master",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/apple_pay_flutter-1.0.2",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -105,13 +105,13 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///Users/admin/Documents/Flutter/SDK/flutter/packages/flutter",
+      "rootUri": "file:///Users/admin/Documents/Flutter_SDK/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "flutter_web_plugins",
-      "rootUri": "file:///Users/admin/Documents/Flutter/SDK/flutter/packages/flutter_web_plugins",
+      "rootUri": "file:///Users/admin/Documents/Flutter_SDK/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -170,42 +170,6 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "permission_handler",
-      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/permission_handler-11.3.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.15"
-    },
-    {
-      "name": "permission_handler_android",
-      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.7",
-      "packageUri": "lib/",
-      "languageVersion": "2.15"
-    },
-    {
-      "name": "permission_handler_apple",
-      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5",
-      "packageUri": "lib/",
-      "languageVersion": "2.15"
-    },
-    {
-      "name": "permission_handler_html",
-      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
-      "name": "permission_handler_platform_interface",
-      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/permission_handler_platform_interface-4.2.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.14"
-    },
-    {
-      "name": "permission_handler_windows",
-      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "petitparser",
       "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/petitparser-6.0.2",
       "packageUri": "lib/",
@@ -219,7 +183,7 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///Users/admin/Documents/Flutter/SDK/flutter/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///Users/admin/Documents/Flutter_SDK/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -267,7 +231,7 @@
     },
     {
       "name": "webview_flutter_android",
-      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/webview_flutter_android-3.16.5",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/webview_flutter_android-3.16.6",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -285,7 +249,7 @@
     },
     {
       "name": "win32",
-      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/win32-5.5.1",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/win32-5.5.3",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -308,10 +272,10 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-07-30T09:17:17.480534Z",
+  "generated": "2024-08-06T12:00:53.585332Z",
   "generator": "pub",
-  "generatorVersion": "3.4.3",
-  "flutterRoot": "file:///Users/admin/Documents/Flutter/SDK/flutter",
-  "flutterVersion": "3.22.2",
+  "generatorVersion": "3.4.4",
+  "flutterRoot": "file:///Users/admin/Documents/Flutter_SDK/flutter",
+  "flutterVersion": "3.22.3",
   "pubCache": "file:///Users/admin/.pub-cache"
 }

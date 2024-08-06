@@ -90,8 +90,13 @@ class _TransactWebpageState extends State<TransactWebpage> {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.blueGrey, //or set color with: Color(0xFF0000FF)
     ));
-    return new WillPopScope(
-      onWillPop: _onBackPressed,
+    return PopScope(
+      onPopInvoked: (shouldLeave) async {
+        bool willLeave = await _onBackPressed();
+        if (willLeave) {
+          shouldLeave = true; // Pass the decision to the callback
+        }
+      },
       child:
       Scaffold(
           appBar: AppBar(
@@ -154,7 +159,7 @@ class _TransactWebpageState extends State<TransactWebpage> {
    String RespJson(String resultData) {
       List<String> resultParameters = resultData.split("&");
       var responseData = {};
-      Map<String, String> map = {};
+      //Map<String, String> map = {};
 
       for(final params in resultParameters){
 

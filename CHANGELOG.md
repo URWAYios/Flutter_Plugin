@@ -58,7 +58,7 @@
 
 * TODO: Upgraded Kotlin SDK version
 
-## [2.0.3] - 31 Jul 2024.
+## [2.0.3] - 06 Aug 2024.
 
 * TODO: Upgraded Kotlin SDK version
 

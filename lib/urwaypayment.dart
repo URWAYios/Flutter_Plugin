@@ -2,7 +2,7 @@ library urwaypayment;
 
 import 'dart:convert';
 import 'dart:io';
-import 'dart:async';
+
 import 'dart:core';
 import 'package:apple_pay_flutter/apple_pay_flutter.dart';
 
@@ -16,9 +16,9 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 //import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
+//import 'package:permission_handler/permission_handler.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+//import 'package:webview_flutter/webview_flutter.dart';
 
 import 'package:urwaypayment/Constantvals.dart';
 import 'package:urwaypayment/Model/DeviceDetailsModel.dart';
@@ -34,9 +34,9 @@ import 'package:urwaypayment/TransactWebpage.dart';
 
 
 
-import 'Model/Post.dart';
-import 'Model/TrxnRespModel.dart';
-import 'TransactPage.dart';
+//import 'Model/Post.dart';
+//import 'Model/TrxnRespModel.dart';
+//import 'TransactPage.dart';
 import 'package:crypto/crypto.dart';
 
 
@@ -108,12 +108,13 @@ class Payment {
     required String zipCode, required String state, required String cardToken, required String tokenizationType,
     required String tokenOperation,required metadata
   }) async {
-    assert(context != null, "context is null!!");
+
 
     String payRespData="";
 
     /**
-     *  Initial Check for Transaction Processing  *****/
+     *  Initial Check for Transaction Processing  *
+     *****/
     if (ResponseConfig.startTrxn != Constantvals.appinitiateTrxn) {
       ResponseConfig.startTrxn = true;
 
@@ -176,13 +177,13 @@ class Payment {
       String udf5, String address, String city, String zipCode, String state,
       String cardToken, String tokenizationType, String tokenOperation,String metadata) async {
     String text;
-    String url = "";
+   // String url = "";
     String readRespData= "";
     String? result;
-    double progress = 0;
+   // double progress = 0;
     String pipeSeperatedString;
     var body;
-    var wifiIp;
+   // var wifiIp;
     ResponseConfig resp = ResponseConfig();
     var ipAdd = "";
     PaymentReq payment;
@@ -227,7 +228,7 @@ class Payment {
       print("Unable to connect. Please Check Internet Connection");
     }
 
-    String ipAdd1;
+   // String ipAdd1;
 
     if (isValidationSucess(
         context,
@@ -251,7 +252,7 @@ class Payment {
 
       PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-      String appName = packageInfo.appName;
+      //String appName = packageInfo.appName;
       // String apppackageName = packageInfo.packageName;
       String appversion = packageInfo.version;
       // String buildNumber = packageInfo.buildNumber;
@@ -472,7 +473,7 @@ print(result);
 
             });
          
-              String data1 = mapdata.toString();
+              //String data1 = mapdata.toString();
         
             readRespData = data;
           }
@@ -499,7 +500,7 @@ print(result);
 
             });
 
-            String data1 = mapdata.toString();
+            //String data1 = mapdata.toString();
             
             readRespData = responseData;
           }
@@ -540,7 +541,7 @@ print(result);
     bool d = false;
 
     final bool isValidEmail = EmailValidator.validate(email);
-    bool isValidE = isValidEmailchk(email);
+    //bool isValidE = isValidEmailchk(email);
 
     if (amount.isEmpty) {
       showalertDailog(context, 'Error', 'Amount should not be empty');
@@ -722,7 +723,7 @@ print(result);
             List<PaymentItem> paymentItems1 = [
               PaymentItem(label: 'Label', amount: dblamt,shippingcharge: dblshippingcharge)
             ];
-
+            print('Merchant Identifier : $merchantIdentifier');
             // initiate payment
             applePaymentData = await ApplePayFlutter.makePayment(
               countryCode: country,
@@ -740,7 +741,8 @@ print(result);
               companyName: companyName,
 
             );
-            // _writetoFile(" Apple token Data :" + applePaymentData.toString());
+
+           print(" Apple token Data :" + applePaymentData.toString());
           }
         }
           on PlatformException  catch(e){
@@ -873,7 +875,7 @@ print(result);
 
       var bytes = utf8.encode(pipeSeperatedString);
       Digest sha256Result = sha256.convert(bytes);
-      final digestHex = hex.encode(sha256Result.bytes);
+      //final digestHex = hex.encode(sha256Result.bytes);
 
       try {
         var jsonBody = jsonEncode({
@@ -902,6 +904,7 @@ print(result);
           'requestHash': sha256.convert(utf8.encode(pipeSeperatedString))
               .toString()
         });
+        print("Apple pay request "+jsonBody);
         var requrl = Uri.parse(Constantvals.requrl);
         final response = await http.post(
           requrl,
