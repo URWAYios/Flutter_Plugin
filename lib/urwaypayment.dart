@@ -407,8 +407,8 @@ print(body);
         var requrl = Uri.parse(Constantvals.requrl);
         var response = await http.post(
             requrl, headers: headers, body: body);
-print(requrl);
-print(response);
+//print(requrl);
+//print(response);
         /**
          * Response is checked */
         if (response.statusCode == 200) {
@@ -436,7 +436,7 @@ print(response);
                   return new TransactWebpage(inURL: compURL);
                 }))) ?? ''  ;
            // _writetoFile(" Response from Hosted Page :  " + result + "\n");
-print(result);
+//print(result);
             if(result == null  )
               {
                 Navigator.of(context)
@@ -904,7 +904,7 @@ print(result);
           'requestHash': sha256.convert(utf8.encode(pipeSeperatedString))
               .toString()
         });
-        print("Apple pay request "+jsonBody);
+       // print("Apple pay request "+jsonBody);
         var requrl = Uri.parse(Constantvals.requrl);
         final response = await http.post(
           requrl,
