@@ -16,8 +16,9 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 //import 'package:path_provider/path_provider.dart';
-
+import 'package:permission_handler/permission_handler.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import 'package:urwaypayment/Constantvals.dart';
 import 'package:urwaypayment/Model/DeviceDetailsModel.dart';
@@ -154,19 +155,21 @@ class Payment {
       }
     }
     else
-    {
-      payRespData= "Transaction already initiated";
-    }
+      {
+        payRespData= "Transaction already initiated";
+      }
 
     return payRespData;
   }
 
 
+
+
+  
   /**
-   *
+   * 
    *  Api calling for First leg
    * */
-
   static Future<String> _read(BuildContext context, String country,
       String action, String currency, String amt, String customerEmail,
       String trackid, String udf1, String udf2, String udf3, String udf4,
@@ -212,7 +215,7 @@ class Payment {
     if (connectivityResult == ConnectivityResult.mobile) {
 
       final ipv4 = await Ipify.ipv4();
-      ipAdd = ipv4;
+       ipAdd = ipv4;
 
     } else if (connectivityResult == ConnectivityResult.wifi) {
 
@@ -339,8 +342,8 @@ class Payment {
             requestHash: digestHex,
             tokenOperation: tokenOperation,
             udf7: '',
-            deviceinfo: devicebody,
-            metaData: metadata
+           deviceinfo: devicebody,
+          metaData: metadata
         );
         body = json.encode(payTokenize.toMap());
       }
@@ -393,18 +396,18 @@ class Payment {
       }
 
       try {
-        //  _writetoFile("Request " + body + "\n");
+     //  _writetoFile("Request " + body + "\n");
         Map<String, String> headers = {
           'Content-type': 'application/json',
           'Accept': 'application/json'
         };
-        print(Constantvals.requrl);
-        print(body);
+       // print(Constantvals.requrl);
+// print(body);
         var requrl = Uri.parse(Constantvals.requrl);
         var response = await http.post(
             requrl, headers: headers, body: body);
-        print(requrl);
-        print(response);
+// print(requrl);
+// print(response);
         /**
          * Response is checked */
         if (response.statusCode == 200) {
@@ -431,19 +434,19 @@ class Payment {
                 MaterialPageRoute<String>(builder: (BuildContext context) {
                   return new TransactWebpage(inURL: compURL);
                 }))) ?? ''  ;
-            // _writetoFile(" Response from Hosted Page :  " + result + "\n");
-            print(result);
+           // _writetoFile(" Response from Hosted Page :  " + result + "\n");
+//print(result);
             if(result == null  )
-            {
-              Navigator.of(context)
-                  .pop();
-              ResponseConfig.startTrxn = false;
-            }
+              {
+                Navigator.of(context)
+                    .pop();
+                ResponseConfig.startTrxn = false;
+              }
             else
-            {
-              ResponseConfig.startTrxn = false;
-              readRespData = result;
-            }
+              {
+                ResponseConfig.startTrxn = false;
+                readRespData = result;
+              }
 
 
           }
@@ -456,21 +459,21 @@ class Payment {
             Map<String, dynamic> mapdata = data;
 
             mapdata.forEach((key, value) {
-
+             
               String strvalue = value.toString();
-
+             
               if(strvalue == null || strvalue == "null")
-              {
-                value='';
-                mapdata.update(key, (value) => value);
-              }
-
+                {
+                  value='';
+                  mapdata.update(key, (value) => value);
+                }
+          
 
 
             });
-
-            String data1 = mapdata.toString();
-
+         
+              String data1 = mapdata.toString();
+        
             readRespData = data;
           }
           else {
@@ -482,22 +485,22 @@ class Payment {
             Map<String, dynamic> mapdata = data;
 
             mapdata.forEach((key, value) {
-
+             
               String strvalue = value.toString();
-
+            
               if(strvalue == null || strvalue == "null") {
                 value = '';
 
 
                 mapdata.update(key, (value) => '');
               }
-
+           
 
 
             });
 
             String data1 = mapdata.toString();
-
+            
             readRespData = responseData;
           }
         }
@@ -536,17 +539,17 @@ class Payment {
   {
     bool d = false;
 
-    final bool isValidEmail = EmailValidator.validate(email);
-    bool isValidE = isValidEmailchk(email);
+    // final bool isValidEmail = EmailValidator.validate(email);
+    // bool isValidE = isValidEmailchk(email);
 
     if (amount.isEmpty) {
       showalertDailog(context, 'Error', 'Amount should not be empty');
       ResponseConfig.startTrxn = false;
     }
-    else if (email.isEmpty) {
-      showalertDailog(context, 'Error', 'Email should not be empty');
-      ResponseConfig.startTrxn = false;
-    }
+    // else if (email.isEmpty) {
+    //   showalertDailog(context, 'Error', 'Email should not be empty');
+    //   ResponseConfig.startTrxn = false;
+    // }
     else if (Action.isEmpty || Action.length == 0) {
       showalertDailog(context, 'Error', 'Action Code should not be empty');
       ResponseConfig.startTrxn = false;
@@ -577,14 +580,14 @@ class Payment {
       showalertDailog(context, 'Error', 'CountryCode should be proper');
       ResponseConfig.startTrxn = false;
     }
-    else if (email.isEmpty) {
-      showalertDailog(context, 'Error', 'Email should not be empt');
-      ResponseConfig.startTrxn = false;
-    }
-    else if (!email.isEmpty && (isValidEmail == false)) {
-      showalertDailog(context, 'Error', 'Email should be proper');
-      ResponseConfig.startTrxn = false;
-    }
+    // else if (email.isEmpty) {
+    //   showalertDailog(context, 'Error', 'Email should not be empt');
+    //   ResponseConfig.startTrxn = false;
+    // }
+    // else if (!email.isEmpty && (isValidEmail == false)) {
+    //   showalertDailog(context, 'Error', 'Email should be proper');
+    //   ResponseConfig.startTrxn = false;
+    // }
     else
     if (((Action == '12') && (cardOperation == 'U')) && (cardToken.isEmpty)) {
       showalertDailog(context, 'Error', 'Card Token should not be empty');
@@ -681,7 +684,7 @@ class Payment {
     Pattern pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@[a-z]+\.+[a-z]$';
     RegExp regExp = new RegExp(pattern.toString());
     bool chk = regExp.hasMatch(emailCheck);
-    return chk;
+      return chk;
   }
 
 
@@ -719,7 +722,7 @@ class Payment {
             List<PaymentItem> paymentItems1 = [
               PaymentItem(label: 'Label', amount: dblamt,shippingcharge: dblshippingcharge)
             ];
-
+            print('error caught: $merchantIdentifier');
             // initiate payment
             applePaymentData = await ApplePayFlutter.makePayment(
               countryCode: country,
@@ -737,46 +740,46 @@ class Payment {
               companyName: companyName,
 
             );
-            // _writetoFile(" Apple token Data :" + applePaymentData.toString());
+            // print(" Apple token Data :" + applePaymentData.toString());
           }
         }
-        on PlatformException  catch(e){
-          print('error caught: $e');
-          print('Failed payment');
-        }
+          on PlatformException  catch(e){
+            print('error caught: $e');
+            print('Failed payment');
+          }
         var totalcharge= double.parse(amt)+double.parse(shippingCharge);
         String strtlchr=totalcharge.toString();
 
 
-        if(applePaymentData.toString().contains("code"))
+      if(applePaymentData.toString().contains("code"))
         {
-          return "";
+           return "";
         }
-        else {
-          var order = await applepayapi(
-              context,
-              country,
-              action,
-              currency,
-              strtlchr,
-              customerEmail,
-              trackid,
-              udf1,
-              udf2,
-              udf3,
-              udf4,
-              udf5,
-              tokenizationType,
-              applePaymentData,metadata);
-
-          appleRespdata = order;
+      else {
+            var order = await applepayapi(
+            context,
+            country,
+            action,
+            currency,
+            strtlchr,
+            customerEmail,
+            trackid,
+            udf1,
+            udf2,
+            udf3,
+            udf4,
+            udf5,
+            tokenizationType,
+            applePaymentData,metadata);
+           // print('Order Data: $order');
+            appleRespdata = order;
+         }
         }
       }
-    }
-    on SocketException catch (e) {
-      print('error caught: $e');
+      on SocketException catch (e) {
+        print('error caught: $e');
 
-      ResponseConfig.startTrxn = false;
+        ResponseConfig.startTrxn = false;
       //appleRespdata = "Please check internet connection";
 
       showalertDailog(context, 'Alert', "Please check Internet Connection");
@@ -842,7 +845,6 @@ class Payment {
       print("Unable to connect. Please Check Internet Connection");
     }
 
-
     if (isValidationSucess(
         context,
         amt,
@@ -854,16 +856,16 @@ class Payment {
         "",
         ""))
     {
-      if(["", null].contains(appleToken['paymentData']) )
-      {
+    if(["", null].contains(appleToken['paymentData']) )
+        {
 
-      }
-      else
-      {
-        paymentTokk = jsonDecode(appleToken['paymentData']) ?? "empty" ;
-      }
+        }
+    else
+        {
+          paymentTokk = jsonDecode(appleToken['paymentData']) ?? "empty" ;
+        }
 
-      pipeSeperatedString =
+    pipeSeperatedString =
           trackid + "|" + Constantvals.termId + "|" + Constantvals.termpass +
               "|" +
               Constantvals.merchantkey + "|" + amt + "|" + currency;
@@ -886,7 +888,7 @@ class Payment {
           'amount': amt,
           'country': country,
           'currency': currency,
-          'customerIp': ipAdd,
+         'customerIp': ipAdd,
           "udf4": "ApplePay",
           "udf5": jsonEncode({
             "paymentData": paymentTokk,
@@ -900,7 +902,7 @@ class Payment {
               .toString()
         });
         var requrl = Uri.parse(Constantvals.requrl);
-        final response = await http.post(
+        final appleresponse = await http.post(
           requrl,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
@@ -908,16 +910,19 @@ class Payment {
           body: jsonBody,
         );
 
-        //  _writetoFile("Request apple pay :" + jsonBody + "\n");
-
-        if (response.statusCode == 200) {
-          //  _writetoFile("Response apple pay  1:" + response.body.toString() + "\n");
-          var data = json.decode(response.body);
+      //  _writetoFile("Request apple pay :" + jsonBody + "\n");
+       //print("Request apple pay in FirstLeg  :" + jsonBody);
+        if (appleresponse.statusCode == 200) {
+        //  _writetoFile("Response apple pay  1:" + response.body.toString() + "\n");
+          var data = json.decode(appleresponse.body);
           var payId = data["tranid"] as String;
-
+         // print("Response apple pay in FirstLeg  :" + appleresponse.body.toString());
           var resp_code = data["responseCode"] as String;
+          //-----------------------Timebeing Change start -----------
+          if (resp_code == '000')
+          {
+            //-----------------------Timebeing Change start -----------
 
-          if (resp_code == '000') {
             var jsonBody = jsonEncode({
               'transid': payId,
               'trackid': trackid,
@@ -925,7 +930,7 @@ class Payment {
               'customerEmail': customerEmail,
               'customerName': "",
               'action': 10,
-              'merchantIp': ipAdd,
+             'merchantIp': ipAdd,
               'terminalId': Constantvals.termId,
               'password': Constantvals.termpass,
               'amount': amt,
@@ -941,7 +946,7 @@ class Payment {
               'requestHash': sha256.convert(utf8.encode(pipeSeperatedString)).toString()
             });
             var requrl = Uri.parse(Constantvals.requrl);
-            final response = await http.post(
+            final responseenq = await http.post(
               requrl,
               headers: <String, String>{
                 'Content-Type': 'application/json; charset=UTF-8',
@@ -949,13 +954,13 @@ class Payment {
               body: jsonBody,
             );
 
-            if (response.statusCode == 200) {
+            if (responseenq.statusCode == 200) {
 
-              //    _writetoFile("Response apple pay Enquiry :" + response.body.toString() + "\n");
-              var data = json.decode(response.body);
+            // print("Response apple pay Enquiry :" + responseenq.body.toString() );
+              var data = json.decode(appleresponse.body);
               var resp1 = json.encode(data);
               ResponseConfig.startTrxn = false;
-              //  _writetoFile(" Response from Hosted Page :  " + resp1 + "\n");
+
               return resp1;
             }
             else {
@@ -970,26 +975,30 @@ class Payment {
                 ErrorMsg = resp.respCode['$apirespCode'];
               }
               var apiresult = data["result"] as String;
-              // _writetoFile(
-              //     " Response from Hosted Page :  " + apirespCode + " : " +
-              //         ErrorMsg + "\n");
+
+
+
 
               showalertDailog(context, '$apiresult', '$ErrorMsg');
             }
-          }
+
+
+            //-------------------  Timebeing Change start  -----------
+
+
+
+          }  //-------------------    -----------
           else {
             // var data = json.decode(response.body);
-            var data = json.decode(response.body);
+            var data = json.decode(appleresponse.body);
             var resp1 = json.encode(data);
             ResponseConfig.startTrxn = false;
-            //  _writetoFile(" Response from Hosted Page :  " + resp1 + "\n");
+          //  _writetoFile(" Response from Hosted Page :  " + resp1 + "\n");
             return resp1;
 
-            // var resp_code = data["responseCode"] as String;
-            //
-            // _writetoFile("Response :" + resp_code + "\n");
-            // showalertDailog(context, 'Error', 'Invalid Request with $resp_code');
+
           }
+          //-----------------------Timebeing Change end -----------
         }
       }
       on Exception catch (e)
@@ -1005,7 +1014,7 @@ class Payment {
       ResponseConfig.startTrxn = false;
     }
 
-    return RespData;
+return RespData;
   }
 }
 

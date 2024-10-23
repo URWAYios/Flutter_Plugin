@@ -1,6 +1,6 @@
 name: urwaypayment
 description: This Flutter plugin provide merchants to easy and hasslefree integration with Urway Payment gateway API's.
-version: 3.0.2
+version: 2.0.4
 homepage: https://github.com/URWAYios/Flutter_Plugin.git
 
 environment:
@@ -10,18 +10,17 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^1.1.0
-
-
+  permission_handler: ^11.0.1
   convert: ^3.0.0
   crypto: ^3.0.3
-  connectivity_plus: ^5.0.1
+  connectivity_plus: ^6.1.0
   email_validator: ^2.0.1
   device_info_plus: ^9.1.0
   dart_ipify: ^1.1.1
-  apple_pay_flutter: ^1.0.2
 
-  package_info_plus: ^8.0.2
-  webview_flutter: ^4.8.0
+  apple_pay_flutter: ^1.0.3
+  package_info_plus: ^8.1.0
+  webview_flutter: ^4.10.0
   #webview_flutter_android: ^3.16.3
 
 
