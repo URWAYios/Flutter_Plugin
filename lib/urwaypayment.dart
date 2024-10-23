@@ -31,71 +31,10 @@ import 'package:urwaypayment/ResponseConfig.dart';
 import 'package:urwaypayment/TransactWebpage.dart';
 
 
-
-
-
-import 'Model/Post.dart';
-import 'Model/TrxnRespModel.dart';
-import 'TransactPage.dart';
 import 'package:crypto/crypto.dart';
 
 
 class Payment {
-
-  // static Future get _localPath async {
-  //   String? dirPath;
-  //
-  //   /**
-  //    * Based on Platform Direct is created
-  //    * */
-  //   if (Platform.isIOS) {
-  //     final appDirectory = await getDownloadsDirectory();
-  //     dirPath = appDirectory!.path;
-  //
-  //   }
-  //
-  //   else if (Platform.isAndroid) {
-  //     // External storage directory: /storage/emulated/0
-  //     final externalDirectory = await getDownloadsDirectory();
-  //     dirPath = externalDirectory!.path;
-  //
-  //   }
-  //
-  //   return dirPath;
-  // }
-
-  // static Future get _localFile async {
-  //   final path = await _localPath;
-  //   final folderName = "urway";
-  //
-  //
-  //   return File('$path/RespReqLog.txt');
-  // }
-
-
-  /**
-   * This method is used to write Response and Request to File
-   * */
-  // static Future _writetoFile(String text) async {
-  //
-  //
-  //   final file = await _localFile;
-  //
-  //
-  //   var now1 = new DateTime.now();
-  //   String datetime = now1.toString();
-  //   var header = datetime + ": " + text;
-  //   File result = await file.writeAsString(header, mode: FileMode.append);
-  //
-  //   if (result == null)
-  //   {
-  //     print("Writing to file failed");
-  //   }
-  //   else
-  //   {
-  //
-  //   }
-  // }
 
   /**
    * This method is used to perform Transactions
@@ -740,7 +679,6 @@ class Payment {
               companyName: companyName,
 
             );
-            // print(" Apple token Data :" + applePaymentData.toString());
           }
         }
           on PlatformException  catch(e){
@@ -771,7 +709,6 @@ class Payment {
             udf5,
             tokenizationType,
             applePaymentData,metadata);
-           // print('Order Data: $order');
             appleRespdata = order;
          }
         }
@@ -911,17 +848,15 @@ class Payment {
         );
 
       //  _writetoFile("Request apple pay :" + jsonBody + "\n");
-       //print("Request apple pay in FirstLeg  :" + jsonBody);
         if (appleresponse.statusCode == 200) {
         //  _writetoFile("Response apple pay  1:" + response.body.toString() + "\n");
           var data = json.decode(appleresponse.body);
           var payId = data["tranid"] as String;
-         // print("Response apple pay in FirstLeg  :" + appleresponse.body.toString());
           var resp_code = data["responseCode"] as String;
-          //-----------------------Timebeing Change start -----------
+
           if (resp_code == '000')
           {
-            //-----------------------Timebeing Change start -----------
+
 
             var jsonBody = jsonEncode({
               'transid': payId,
@@ -956,7 +891,6 @@ class Payment {
 
             if (responseenq.statusCode == 200) {
 
-            // print("Response apple pay Enquiry :" + responseenq.body.toString() );
               var data = json.decode(appleresponse.body);
               var resp1 = json.encode(data);
               ResponseConfig.startTrxn = false;
@@ -976,18 +910,10 @@ class Payment {
               }
               var apiresult = data["result"] as String;
 
-
-
-
               showalertDailog(context, '$apiresult', '$ErrorMsg');
             }
 
-
-            //-------------------  Timebeing Change start  -----------
-
-
-
-          }  //-------------------    -----------
+          }
           else {
             // var data = json.decode(response.body);
             var data = json.decode(appleresponse.body);
@@ -998,7 +924,7 @@ class Payment {
 
 
           }
-          //-----------------------Timebeing Change end -----------
+
         }
       }
       on Exception catch (e)
