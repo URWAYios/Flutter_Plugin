@@ -2,7 +2,7 @@ library urwaypayment;
 
 import 'dart:convert';
 import 'dart:io';
-
+import 'dart:async';
 import 'dart:core';
 import 'package:apple_pay_flutter/apple_pay_flutter.dart';
 
@@ -16,9 +16,8 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 //import 'package:path_provider/path_provider.dart';
-//import 'package:permission_handler/permission_handler.dart';
+
 import 'package:package_info_plus/package_info_plus.dart';
-//import 'package:webview_flutter/webview_flutter.dart';
 
 import 'package:urwaypayment/Constantvals.dart';
 import 'package:urwaypayment/Model/DeviceDetailsModel.dart';
@@ -34,9 +33,9 @@ import 'package:urwaypayment/TransactWebpage.dart';
 
 
 
-//import 'Model/Post.dart';
-//import 'Model/TrxnRespModel.dart';
-//import 'TransactPage.dart';
+import 'Model/Post.dart';
+import 'Model/TrxnRespModel.dart';
+import 'TransactPage.dart';
 import 'package:crypto/crypto.dart';
 
 
@@ -108,13 +107,12 @@ class Payment {
     required String zipCode, required String state, required String cardToken, required String tokenizationType,
     required String tokenOperation,required metadata
   }) async {
-
+    assert(context != null, "context is null!!");
 
     String payRespData="";
 
     /**
-     *  Initial Check for Transaction Processing  *
-     *****/
+     *  Initial Check for Transaction Processing  *****/
     if (ResponseConfig.startTrxn != Constantvals.appinitiateTrxn) {
       ResponseConfig.startTrxn = true;
 
@@ -156,34 +154,32 @@ class Payment {
       }
     }
     else
-      {
-        payRespData= "Transaction already initiated";
-      }
+    {
+      payRespData= "Transaction already initiated";
+    }
 
     return payRespData;
   }
 
 
-
-
-  
   /**
-   * 
+   *
    *  Api calling for First leg
    * */
+
   static Future<String> _read(BuildContext context, String country,
       String action, String currency, String amt, String customerEmail,
       String trackid, String udf1, String udf2, String udf3, String udf4,
       String udf5, String address, String city, String zipCode, String state,
       String cardToken, String tokenizationType, String tokenOperation,String metadata) async {
     String text;
-   // String url = "";
+    String url = "";
     String readRespData= "";
     String? result;
-   // double progress = 0;
+    double progress = 0;
     String pipeSeperatedString;
     var body;
-   // var wifiIp;
+    var wifiIp;
     ResponseConfig resp = ResponseConfig();
     var ipAdd = "";
     PaymentReq payment;
@@ -216,7 +212,7 @@ class Payment {
     if (connectivityResult == ConnectivityResult.mobile) {
 
       final ipv4 = await Ipify.ipv4();
-       ipAdd = ipv4;
+      ipAdd = ipv4;
 
     } else if (connectivityResult == ConnectivityResult.wifi) {
 
@@ -228,7 +224,7 @@ class Payment {
       print("Unable to connect. Please Check Internet Connection");
     }
 
-   // String ipAdd1;
+    String ipAdd1;
 
     if (isValidationSucess(
         context,
@@ -252,7 +248,7 @@ class Payment {
 
       PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-      //String appName = packageInfo.appName;
+      String appName = packageInfo.appName;
       // String apppackageName = packageInfo.packageName;
       String appversion = packageInfo.version;
       // String buildNumber = packageInfo.buildNumber;
@@ -343,8 +339,8 @@ class Payment {
             requestHash: digestHex,
             tokenOperation: tokenOperation,
             udf7: '',
-           deviceinfo: devicebody,
-          metaData: metadata
+            deviceinfo: devicebody,
+            metaData: metadata
         );
         body = json.encode(payTokenize.toMap());
       }
@@ -397,18 +393,18 @@ class Payment {
       }
 
       try {
-     //  _writetoFile("Request " + body + "\n");
+        //  _writetoFile("Request " + body + "\n");
         Map<String, String> headers = {
           'Content-type': 'application/json',
           'Accept': 'application/json'
         };
         print(Constantvals.requrl);
-print(body);
+        print(body);
         var requrl = Uri.parse(Constantvals.requrl);
         var response = await http.post(
             requrl, headers: headers, body: body);
-//print(requrl);
-//print(response);
+        print(requrl);
+        print(response);
         /**
          * Response is checked */
         if (response.statusCode == 200) {
@@ -435,19 +431,19 @@ print(body);
                 MaterialPageRoute<String>(builder: (BuildContext context) {
                   return new TransactWebpage(inURL: compURL);
                 }))) ?? ''  ;
-           // _writetoFile(" Response from Hosted Page :  " + result + "\n");
-//print(result);
+            // _writetoFile(" Response from Hosted Page :  " + result + "\n");
+            print(result);
             if(result == null  )
-              {
-                Navigator.of(context)
-                    .pop();
-                ResponseConfig.startTrxn = false;
-              }
+            {
+              Navigator.of(context)
+                  .pop();
+              ResponseConfig.startTrxn = false;
+            }
             else
-              {
-                ResponseConfig.startTrxn = false;
-                readRespData = result;
-              }
+            {
+              ResponseConfig.startTrxn = false;
+              readRespData = result;
+            }
 
 
           }
@@ -460,21 +456,21 @@ print(body);
             Map<String, dynamic> mapdata = data;
 
             mapdata.forEach((key, value) {
-             
+
               String strvalue = value.toString();
-             
+
               if(strvalue == null || strvalue == "null")
-                {
-                  value='';
-                  mapdata.update(key, (value) => value);
-                }
-          
+              {
+                value='';
+                mapdata.update(key, (value) => value);
+              }
+
 
 
             });
-         
-              //String data1 = mapdata.toString();
-        
+
+            String data1 = mapdata.toString();
+
             readRespData = data;
           }
           else {
@@ -486,22 +482,22 @@ print(body);
             Map<String, dynamic> mapdata = data;
 
             mapdata.forEach((key, value) {
-             
+
               String strvalue = value.toString();
-            
+
               if(strvalue == null || strvalue == "null") {
                 value = '';
 
 
                 mapdata.update(key, (value) => '');
               }
-           
+
 
 
             });
 
-            //String data1 = mapdata.toString();
-            
+            String data1 = mapdata.toString();
+
             readRespData = responseData;
           }
         }
@@ -541,7 +537,7 @@ print(body);
     bool d = false;
 
     final bool isValidEmail = EmailValidator.validate(email);
-    //bool isValidE = isValidEmailchk(email);
+    bool isValidE = isValidEmailchk(email);
 
     if (amount.isEmpty) {
       showalertDailog(context, 'Error', 'Amount should not be empty');
@@ -685,7 +681,7 @@ print(body);
     Pattern pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@[a-z]+\.+[a-z]$';
     RegExp regExp = new RegExp(pattern.toString());
     bool chk = regExp.hasMatch(emailCheck);
-      return chk;
+    return chk;
   }
 
 
@@ -723,7 +719,7 @@ print(body);
             List<PaymentItem> paymentItems1 = [
               PaymentItem(label: 'Label', amount: dblamt,shippingcharge: dblshippingcharge)
             ];
-            print('Merchant Identifier : $merchantIdentifier');
+
             // initiate payment
             applePaymentData = await ApplePayFlutter.makePayment(
               countryCode: country,
@@ -741,47 +737,46 @@ print(body);
               companyName: companyName,
 
             );
-
-           print(" Apple token Data :" + applePaymentData.toString());
+            // _writetoFile(" Apple token Data :" + applePaymentData.toString());
           }
         }
-          on PlatformException  catch(e){
-            print('error caught: $e');
-            print('Failed payment');
-          }
+        on PlatformException  catch(e){
+          print('error caught: $e');
+          print('Failed payment');
+        }
         var totalcharge= double.parse(amt)+double.parse(shippingCharge);
         String strtlchr=totalcharge.toString();
 
 
-      if(applePaymentData.toString().contains("code"))
+        if(applePaymentData.toString().contains("code"))
         {
-           return "";
+          return "";
         }
-      else {
-            var order = await applepayapi(
-            context,
-            country,
-            action,
-            currency,
-            strtlchr,
-            customerEmail,
-            trackid,
-            udf1,
-            udf2,
-            udf3,
-            udf4,
-            udf5,
-            tokenizationType,
-            applePaymentData,metadata);
+        else {
+          var order = await applepayapi(
+              context,
+              country,
+              action,
+              currency,
+              strtlchr,
+              customerEmail,
+              trackid,
+              udf1,
+              udf2,
+              udf3,
+              udf4,
+              udf5,
+              tokenizationType,
+              applePaymentData,metadata);
 
-            appleRespdata = order;
-         }
+          appleRespdata = order;
         }
       }
-      on SocketException catch (e) {
-        print('error caught: $e');
+    }
+    on SocketException catch (e) {
+      print('error caught: $e');
 
-        ResponseConfig.startTrxn = false;
+      ResponseConfig.startTrxn = false;
       //appleRespdata = "Please check internet connection";
 
       showalertDailog(context, 'Alert', "Please check Internet Connection");
@@ -859,23 +854,23 @@ print(body);
         "",
         ""))
     {
-    if(["", null].contains(appleToken['paymentData']) )
-        {
+      if(["", null].contains(appleToken['paymentData']) )
+      {
 
-        }
-    else
-        {
-          paymentTokk = jsonDecode(appleToken['paymentData']) ?? "empty" ;
-        }
+      }
+      else
+      {
+        paymentTokk = jsonDecode(appleToken['paymentData']) ?? "empty" ;
+      }
 
-    pipeSeperatedString =
+      pipeSeperatedString =
           trackid + "|" + Constantvals.termId + "|" + Constantvals.termpass +
               "|" +
               Constantvals.merchantkey + "|" + amt + "|" + currency;
 
       var bytes = utf8.encode(pipeSeperatedString);
       Digest sha256Result = sha256.convert(bytes);
-      //final digestHex = hex.encode(sha256Result.bytes);
+      final digestHex = hex.encode(sha256Result.bytes);
 
       try {
         var jsonBody = jsonEncode({
@@ -891,7 +886,7 @@ print(body);
           'amount': amt,
           'country': country,
           'currency': currency,
-         'customerIp': ipAdd,
+          'customerIp': ipAdd,
           "udf4": "ApplePay",
           "udf5": jsonEncode({
             "paymentData": paymentTokk,
@@ -904,7 +899,6 @@ print(body);
           'requestHash': sha256.convert(utf8.encode(pipeSeperatedString))
               .toString()
         });
-       // print("Apple pay request "+jsonBody);
         var requrl = Uri.parse(Constantvals.requrl);
         final response = await http.post(
           requrl,
@@ -914,10 +908,10 @@ print(body);
           body: jsonBody,
         );
 
-      //  _writetoFile("Request apple pay :" + jsonBody + "\n");
+        //  _writetoFile("Request apple pay :" + jsonBody + "\n");
 
         if (response.statusCode == 200) {
-        //  _writetoFile("Response apple pay  1:" + response.body.toString() + "\n");
+          //  _writetoFile("Response apple pay  1:" + response.body.toString() + "\n");
           var data = json.decode(response.body);
           var payId = data["tranid"] as String;
 
@@ -931,7 +925,7 @@ print(body);
               'customerEmail': customerEmail,
               'customerName': "",
               'action': 10,
-             'merchantIp': ipAdd,
+              'merchantIp': ipAdd,
               'terminalId': Constantvals.termId,
               'password': Constantvals.termpass,
               'amount': amt,
@@ -957,11 +951,11 @@ print(body);
 
             if (response.statusCode == 200) {
 
-          //    _writetoFile("Response apple pay Enquiry :" + response.body.toString() + "\n");
+              //    _writetoFile("Response apple pay Enquiry :" + response.body.toString() + "\n");
               var data = json.decode(response.body);
               var resp1 = json.encode(data);
               ResponseConfig.startTrxn = false;
-            //  _writetoFile(" Response from Hosted Page :  " + resp1 + "\n");
+              //  _writetoFile(" Response from Hosted Page :  " + resp1 + "\n");
               return resp1;
             }
             else {
@@ -988,7 +982,7 @@ print(body);
             var data = json.decode(response.body);
             var resp1 = json.encode(data);
             ResponseConfig.startTrxn = false;
-          //  _writetoFile(" Response from Hosted Page :  " + resp1 + "\n");
+            //  _writetoFile(" Response from Hosted Page :  " + resp1 + "\n");
             return resp1;
 
             // var resp_code = data["responseCode"] as String;
@@ -1011,7 +1005,7 @@ print(body);
       ResponseConfig.startTrxn = false;
     }
 
-return RespData;
+    return RespData;
   }
 }
 
