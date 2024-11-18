@@ -68,7 +68,7 @@
 
 ## [2.0.5] - 18 Nov 2024.
 
-* TODO: Upgraded Gradle version apple pay plugin version
+* TODO: Upgraded Connectivity_plus Plugin for Connectivity check
 
 
 
