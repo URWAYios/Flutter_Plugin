@@ -161,10 +161,6 @@ class Payment {
     try {
       final ipv4 = await Ipify.ipv4();  // Try to get the IP address
       ipAdd = ipv4;  // Assign the result if successful
-      print('Your IP address is: $ipAdd');
-
-
-
 
     if (isValidationSucess(
         context,
@@ -343,8 +339,7 @@ class Payment {
         var requrl = Uri.parse(Constantvals.requrl);
         var response = await http.post(
             requrl, headers: headers, body: body);
- print(body);
-print(response);
+
         /**
          * Response is checked */
         if (response.statusCode == 200) {
