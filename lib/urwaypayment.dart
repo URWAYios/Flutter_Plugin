@@ -8,17 +8,19 @@ import 'package:apple_pay_flutter/apple_pay_flutter.dart';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:convert/convert.dart';
+
+import 'package:crypto/crypto.dart';
 import 'package:dart_ipify/dart_ipify.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:email_validator/email_validator.dart';
+
 import 'package:flutter/services.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-//import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
+
+
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+
 
 import 'package:urwaypayment/Constantvals.dart';
 import 'package:urwaypayment/Model/DeviceDetailsModel.dart';
@@ -29,9 +31,6 @@ import 'package:urwaypayment/Model/PaymentReq.dart';
 
 import 'package:urwaypayment/ResponseConfig.dart';
 import 'package:urwaypayment/TransactWebpage.dart';
-
-
-import 'package:crypto/crypto.dart';
 
 
 class Payment {
@@ -47,7 +46,7 @@ class Payment {
     required String zipCode, required String state, required String cardToken, required String tokenizationType,
     required String tokenOperation,required metadata
   }) async {
-    assert(context != null, "context is null!!");
+   assert(context != null, "context is null!!");
 
     String payRespData="";
 
@@ -57,8 +56,13 @@ class Payment {
       ResponseConfig.startTrxn = true;
 
       try {
-        final result = await InternetAddress.lookup('google.com');
-        if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+
+       // var connectivityResult = await (Connectivity().checkConnectivity());
+         final List<ConnectivityResult> connectivityResult = await (Connectivity().checkConnectivity());
+         print(connectivityResult);
+         if ( ! connectivityResult.contains(ConnectivityResult.none) )
+         {
+
           var order = await _read(
               context,
               country,
@@ -83,6 +87,13 @@ class Payment {
           );
           payRespData = order;
         }
+         else
+           {
+             ResponseConfig.startTrxn = false;
+             showalertDailog(context, 'Internet Connection',
+                 'Please check your Internet Connection  ');
+
+           }
       }
       on SocketException catch (e)
       {
@@ -147,26 +158,13 @@ class Payment {
     Constantvals.requrl = req_url;
 
 
-    /**
-     * Connectivity is checked as there is server call*/
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    //print(connectivityResult);
-    if (connectivityResult == ConnectivityResult.mobile) {
+    try {
+      final ipv4 = await Ipify.ipv4();  // Try to get the IP address
+      ipAdd = ipv4;  // Assign the result if successful
+      print('Your IP address is: $ipAdd');
 
-      final ipv4 = await Ipify.ipv4();
-       ipAdd = ipv4;
 
-    } else if (connectivityResult == ConnectivityResult.wifi) {
 
-      final ipv4 = await Ipify.ipv4();
-      ipAdd = ipv4;
-
-    }
-    else {
-      print("Unable to connect. Please Check Internet Connection");
-    }
-
-    String ipAdd1;
 
     if (isValidationSucess(
         context,
@@ -340,13 +338,13 @@ class Payment {
           'Content-type': 'application/json',
           'Accept': 'application/json'
         };
-       // print(Constantvals.requrl);
-// print(body);
+
+
         var requrl = Uri.parse(Constantvals.requrl);
         var response = await http.post(
             requrl, headers: headers, body: body);
-// print(requrl);
-// print(response);
+ print(body);
+print(response);
         /**
          * Response is checked */
         if (response.statusCode == 200) {
@@ -373,8 +371,7 @@ class Payment {
                 MaterialPageRoute<String>(builder: (BuildContext context) {
                   return new TransactWebpage(inURL: compURL);
                 }))) ?? ''  ;
-           // _writetoFile(" Response from Hosted Page :  " + result + "\n");
-//print(result);
+
             if(result == null  )
               {
                 Navigator.of(context)
@@ -433,9 +430,6 @@ class Payment {
 
                 mapdata.update(key, (value) => '');
               }
-           
-
-
             });
 
             String data1 = mapdata.toString();
@@ -455,14 +449,22 @@ class Payment {
         print('error caught: $e');
 
         ResponseConfig.startTrxn = false;
-        showalertDailog(context, 'Internet Connection',
-            'Please check your Internet Connection $e ');
+        showalertDailog(context, 'Internet Connection','Please check your Internet Connection $e ');
 
       }
+
+
     }
     else {
+            ResponseConfig.startTrxn = false;
+         }
+    } catch (e) {
+      // Handle the exception here
+      print('Error: Unable to reach the Ipify service.');
+      print('Exception: $e');
 
       ResponseConfig.startTrxn = false;
+      showalertDailog(context, 'Alert', "Please check Internet Connection");
     }
 
     return readRespData;
@@ -506,27 +508,20 @@ class Payment {
       showalertDailog(context, 'Error', 'Track ID should not be empty');
       ResponseConfig.startTrxn = false;
     }
-    else if (Currency.length > 3) {
-      showalertDailog(context, 'Error', 'Currency should be proper');
-      ResponseConfig.startTrxn = false;
-    }
+    // else if (Currency.length > 3) {
+    //   showalertDailog(context, 'Error', 'Currency should be proper');
+    //   ResponseConfig.startTrxn = false;
+    // }
 
     else if (Action.length > 3) {
       showalertDailog(context, 'Error', 'Action Code should be proper ');
       ResponseConfig.startTrxn = false;
     }
-    else if (CountryCode.length > 2) {
-      showalertDailog(context, 'Error', 'CountryCode should be proper');
-      ResponseConfig.startTrxn = false;
-    }
-    // else if (email.isEmpty) {
-    //   showalertDailog(context, 'Error', 'Email should not be empt');
+    // else if (CountryCode.length > 2) {
+    //   showalertDailog(context, 'Error', 'CountryCode should be proper');
     //   ResponseConfig.startTrxn = false;
     // }
-    // else if (!email.isEmpty && (isValidEmail == false)) {
-    //   showalertDailog(context, 'Error', 'Email should be proper');
-    //   ResponseConfig.startTrxn = false;
-    // }
+
     else
     if (((Action == '12') && (cardOperation == 'U')) && (cardToken.isEmpty)) {
       showalertDailog(context, 'Error', 'Card Token should not be empty');
@@ -754,33 +749,35 @@ class Payment {
     Constantvals.termpass = t_pass;
     Constantvals.merchantkey = merc;
     Constantvals.requrl = req_url;
-
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile) {
-
-      final ipv4 = await Ipify.ipv4();
-
-
-      ipAdd = ipv4;
-
-
-    } else if (connectivityResult == ConnectivityResult.wifi) {
-
-      try {
-
-        final ipv4 = await Ipify.ipv4();
-
-        ipAdd = ipv4;
-
-      } on PlatformException  catch (e){
-        print('error caught: $e');
-        print('Failed to get broadcast IP.');
-      }
-
-    }
-    else {
-      print("Unable to connect. Please Check Internet Connection");
-    }
+    final ipv4 = await Ipify.ipv4();
+    ipAdd = ipv4;
+    print('IP ADDress : $ipAdd');
+    // var connectivityResult = await (Connectivity().checkConnectivity());
+    // if (connectivityResult == ConnectivityResult.mobile) {
+    //
+    //   final ipv4 = await Ipify.ipv4();
+    //
+    //
+    //   ipAdd = ipv4;
+    //
+    //
+    // } else if (connectivityResult == ConnectivityResult.wifi) {
+    //
+    //   try {
+    //
+    //     final ipv4 = await Ipify.ipv4();
+    //
+    //     ipAdd = ipv4;
+    //
+    //   } on PlatformException  catch (e){
+    //     print('error caught: $e');
+    //     print('Failed to get broadcast IP.');
+    //   }
+    //
+    // }
+    // else {
+    //   print("Unable to connect. Please Check Internet Connection");
+    // }
 
     if (isValidationSucess(
         context,

@@ -2,14 +2,12 @@
   <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
     <CLASSES>
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/device_info_plus-9.1.2" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler-11.3.1" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.2" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/connectivity_plus-6.1.0" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/apple_pay_flutter-1.0.3" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/package_info_plus-8.1.0" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/webview_flutter_android-4.0.0" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/webview_flutter-4.10.0" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.16.0" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/webview_flutter_android-4.0.2" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/package_info_plus-8.1.1" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.16.2" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

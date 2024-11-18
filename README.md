@@ -10,9 +10,22 @@ Import the package to your pubspec.yaml to use it:
     ...
     dependencies:
     ...
-    urwaypayment: ^2.0.4 
+    urwaypayment: ^2.0.5 
     ...
     ...
+
+
+## Requirement
+
+      *     Flutter >=3.5.1
+      *     Dart >=3.0.0 <4.0.0
+      *     iOS >=12.0
+      *     MacOS >=10.14
+      *     Android compileSDK 34
+      *     Java 17
+      *     Android Gradle Plugin 8.5.2
+      *     Gradle wrapper >=8.4
+    
 
 ## Addition Configuration for performing transactions.
 

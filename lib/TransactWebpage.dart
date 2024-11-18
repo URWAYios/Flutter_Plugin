@@ -106,46 +106,6 @@ class _TransactWebpageState extends State<TransactWebpage> {
               WebViewWidget(controller: _controller),
               if (_progress < 1) LinearProgressIndicator(value: _progress),
 
-            //   WebView(
-            // initialUrl: widget.inURL,
-            // onWebViewCreated: (WebViewController webViewController) {
-            //   _controller = webViewController;
-            // },
-            //   onPageStarted: (String url) {
-            //     setState(() {
-            //       this.url = url.toString();
-            //       // print(this.url);
-            //     });
-            //   },
-            //
-            //   onPageFinished: (String url) {
-            //    // print(this.url);
-            //     var disurl = url.toString();
-            //     if (disurl.contains("&Result")) {
-            //       List<String> arr = url.toString().split('?');
-            //       var resData = arr[1];
-            //       print('RES DATA $resData');
-            //       //String lastData=splitResponse(arr[1]);
-            //
-            //      String mapData = RespJson(arr[1]);
-            //     print(mapData);
-            //       // // print('Transact List $mapData');
-            //       //
-            //       //
-            //       // var map1 = Map.fromIterable(
-            //       //     mapData, key: (e) => e.resKey, value: (e) => e.resValue);
-            //       // print(map1);
-            //       Navigator.pop(context, '$mapData');
-            //     }
-            //
-            //   },
-            //   onProgress: (progress) {
-            //     setState(() {
-            //       _progress = (progress / 100) as double;
-            //     });
-            //   }, controller: null,
-            //
-            // ),
 ],
           ),
       ),
@@ -154,17 +114,10 @@ class _TransactWebpageState extends State<TransactWebpage> {
    String RespJson(String resultData) {
       List<String> resultParameters = resultData.split("&");
       var responseData = {};
-      Map<String, String> map = {};
+     /// Map<String, String> map = {};
 
       for(final params in resultParameters){
 
-        //
-        // List<String> keyValue = params.split('=');
-        // if (keyValue.length == 2) {
-        //   map[keyValue[0]] = Uri.decodeComponent(keyValue[1]);
-        // } else if (keyValue.length == 1) {
-        //   map[keyValue[0]] = "";
-        // }
 
         List parts = params.split("=");
         String key = parts[0];
