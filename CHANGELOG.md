@@ -66,6 +66,9 @@
 
 * TODO: Upgraded Gradle version apple pay plugin version
 
+## [2.0.5] - 18 Nov 2024.
+
+* TODO: Upgraded Gradle version apple pay plugin version
 
 
 
