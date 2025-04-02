@@ -70,5 +70,6 @@
 
 * TODO: Upgraded Connectivity_plus Plugin for Connectivity check
 
+## [2.0.6] - 02 Apr 2025.
 
-
+* TODO: Upgraded Plugin dependencies

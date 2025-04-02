@@ -134,7 +134,7 @@ class Payment {
     var body;
     var wifiIp;
     ResponseConfig resp = ResponseConfig();
-    var ipAdd = "";
+    String ipAdd = "" ;
     PaymentReq payment;
 
     String compURL;
@@ -159,10 +159,12 @@ class Payment {
 
 
     try {
-      final ipv4 = await Ipify.ipv4();  // Try to get the IP address
-      ipAdd = ipv4;  // Assign the result if successful
+      final ipv4 = await Ipify.ipv4();
+      print(ipv4);// Try to get the IP address
+      ipAdd = ipv4.toString();  // Assign the result if successful
+      print("IP ADD "+ipAdd);
 
-    if (isValidationSucess(
+      if (isValidationSucess(
         context,
         amt,
         customerEmail,
@@ -291,7 +293,6 @@ class Payment {
             amount: amt,
             customerIp: ipAdd,
             merchantIp: ipAdd,
-
             trackid: trackid,
             udf1: udf1,
             udf2: udf2,
@@ -324,12 +325,12 @@ class Payment {
             requestHash: digestHex, udf7: '',
             deviceinfo: devicebody,
             metaData: metadata);
-
         body = json.encode(paySTC.toMap());
       }
 
       try {
-     //  _writetoFile("Request " + body + "\n");
+      // _writetoFile("Request " + body + "\n");
+        print("Request Body" + body);
         Map<String, String> headers = {
           'Content-type': 'application/json',
           'Accept': 'application/json'
